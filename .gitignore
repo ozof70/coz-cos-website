@@ -1,0 +1,11 @@
+dist/
+*.zip
+.netlify/
+qa/
+node_modules/
+.env
+.env.*
+!.env.example
+update-language.mjs
+update-beginner-seo.mjs
+.github-upload/

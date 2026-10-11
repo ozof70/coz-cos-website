@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /share-preview.html
+Sitemap: https://cozcos.com/sitemap.xml
