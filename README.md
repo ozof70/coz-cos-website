@@ -1,5 +1,18 @@
 # COz Cos 官網
 
+## 目前版本與管理入口
+
+- 正式站：https://cozcos.com/；預設繁體中文，英文位於 /en.html。
+- 私人原始碼儲存庫：https://github.com/ozof70/coz-cos-website （ozof70）。
+- 下方歷史紀錄依日期累積；最新設定以此節、content.js 與生成的 HTML 為準。
+- 目前使用 Huninn 圓體、漫畫風標題及英文標語 Bring Your Character to Life.；20 張背景照片分成四欄，上、下、上、下輪動。沒有「暫停照片」按鈕。
+- 五個玻璃平台入口與名稱一起在向下捲動到聯絡區時出現，點擊直接前往平台。
+- 中英文 About 與 FAQ 頁、每語言 11 則常見問題、搜尋與分享資訊均已完成。
+- Netlify 沿用 stellar-pothos-be4f0b；不要建立新站點。GitHub 存放原始碼，不連接自動部署。一般修改先留在本機。
+- 流量統計採 Google Analytics 4；目前等待服務條款確認，尚未接入正式站。詳見 [ANALYTICS.md](ANALYTICS.md)。
+
+## 初版與修改紀錄
+
 繁體中文靜態官網，HTML / CSS / JavaScript，不需要安裝套件或執行建置。精簡一頁版：品牌與服務介紹、聯絡我們。整個頁面只提供五個圖像連結：Instagram、Facebook、Threads、共享衣櫃、賣貨便。下方區塊以 IntersectionObserver 逐步淡入；減少動態效果設定下直接顯示，鍵盤聚焦也會即時顯示內容。圖像連結提供 aria-label 與 title。
 
 全站採霞鶩文楷繁體（Google Fonts），未載入時使用裝置可用的楷書字體。深色背景以官方 IG 的 10 張不同客片交錯形成 4×4 網格，緩慢向上循環；文字直接顯示在深色遮罩上，不使用白色內容面板。標題旁使用共享衣櫃相同的原始 Logo。可用「暫停照片」按鈕停止，減少動態效果設定下不移動。客片原始檔保存在 assets/clients/，出處見該資料夾 SOURCES.md。移除英文品牌標語，維持五個連結。
