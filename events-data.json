@@ -1,0 +1,467 @@
+{
+  "updated": "2026-10-13",
+  "source": "https://www.doujin.com.tw/events/alist/all",
+  "bookingPolicy": "Upcoming events are open to COz Cos booking inquiries; availability is confirmed on Instagram.",
+  "events": [
+    {
+      "id": "doujin-2482",
+      "name": "KACG2610-高雄動漫城-10月紅葉場",
+      "region": "south",
+      "venue": "高雄車站-B1｜高雄駅一番街 北站・南站-B2｜台鐵連通道-B3",
+      "startDate": "2026-10-17",
+      "endDate": "2026-10-18",
+      "source": "https://www.doujin.com.tw/events/info/2482",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2502",
+      "name": "《迦勒底出動！異聞空間潛入調查 ～FGO only 2026～》",
+      "region": "north",
+      "venue": "三重綜合體育館",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-24",
+      "source": "https://www.doujin.com.tw/events/info/2502",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2530",
+      "name": "萬聖惡作祭 vol.2 紅月之櫻 紅月夜",
+      "region": "south",
+      "venue": "高雄高鐵左營新光三越 10樓",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-26",
+      "source": "https://www.doujin.com.tw/events/info/2530",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2545",
+      "name": "巴哈姆特30週年站聚「巴哈市集」",
+      "region": "north",
+      "venue": "花博公園 爭艷館",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-25",
+      "source": "https://www.doujin.com.tw/events/info/2545",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2483",
+      "name": "KACG2611-高雄動漫城-11月萬聖場",
+      "region": "south",
+      "venue": "高雄車站-B1｜高雄駅一番街 北站・南站-B2｜台鐵連通道-B3",
+      "startDate": "2026-10-31",
+      "endDate": "2026-11-01",
+      "source": "https://www.doujin.com.tw/events/info/2483",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2535",
+      "name": "萬聖動漫WakuWaku x 善用市集2026",
+      "region": "central",
+      "venue": "花蓮縣吉安鄉萬善廟",
+      "startDate": "2026-10-31",
+      "endDate": "2026-10-31",
+      "source": "https://www.doujin.com.tw/events/info/2535",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2445",
+      "name": "Petit Fancy亞洲動漫創作展 PF45",
+      "region": "north",
+      "venue": "花博公園 爭艷館",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-08",
+      "source": "https://www.doujin.com.tw/events/info/2445",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2551",
+      "name": "2026 高捷冬漫祭 ft. 全國電競青年錦標賽",
+      "region": "south",
+      "venue": "高雄捷運美麗島站",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-08",
+      "source": "https://www.doujin.com.tw/events/info/2551",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2477",
+      "name": "Bring It On！歐美主題ONLY場 BIO14",
+      "region": "north",
+      "venue": "三重綜合體育館",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-14",
+      "source": "https://www.doujin.com.tw/events/info/2477",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2484",
+      "name": "明日方舟only-零點誓約",
+      "region": "north",
+      "venue": "台北市客家文化中心",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-14",
+      "source": "https://www.doujin.com.tw/events/info/2484",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2452",
+      "name": "PS-TC 奇幻動漫祭-台中場",
+      "region": "central",
+      "venue": "沃茲新創空間 Words Live | 站前館(多功能二館)",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "source": "https://www.doujin.com.tw/events/info/2452",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2469",
+      "name": "《哈瑪旅行社～台灣之旅～》18TRIP Only",
+      "region": "north",
+      "venue": "耕莘文教院 多功能禮堂",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "source": "https://www.doujin.com.tw/events/info/2469",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2486",
+      "name": "韓國主題ONLY【Katch-UP! 4 SOLO】",
+      "region": "north",
+      "venue": "三重綜合體育館",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "source": "https://www.doujin.com.tw/events/info/2486",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2503",
+      "name": "CC同人創作祭",
+      "region": "north",
+      "venue": "松山文創園區-五號倉庫",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-22",
+      "source": "https://www.doujin.com.tw/events/info/2503",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2468",
+      "name": "SEGA GAME ONLY",
+      "region": "north",
+      "venue": "台北地下街 Y27 廣場",
+      "startDate": "2026-11-28",
+      "endDate": "2026-11-28",
+      "source": "https://www.doujin.com.tw/events/info/2468",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2552",
+      "name": "2026 高捷冬漫祭 ft. 動漫交響音樂會 / 動漫舞蹈大賽",
+      "region": "south",
+      "venue": "O5/R10高雄捷運美麗島站",
+      "startDate": "2026-11-28",
+      "endDate": "2026-11-29",
+      "source": "https://www.doujin.com.tw/events/info/2552",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2475",
+      "name": "極光創漫祭",
+      "region": "north",
+      "venue": "南港展覽館二館 1樓",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-06",
+      "source": "https://www.doujin.com.tw/events/info/2475",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2487",
+      "name": "2026 高雄駁二動漫祭 FFK19",
+      "region": "south",
+      "venue": "高雄市駁二藝術特區",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-06",
+      "source": "https://www.doujin.com.tw/events/info/2487",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2512",
+      "name": "黑雪狐★二手演藝圈主題市集 第2屆 #演藝圈Only",
+      "region": "north",
+      "venue": "[北部]台北地下街 1 號廣場",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-06",
+      "source": "https://www.doujin.com.tw/events/info/2512",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2356",
+      "name": "CWT-74《台北場》",
+      "region": "north",
+      "venue": "國立臺灣大學綜合體育館1F&3F&4F",
+      "startDate": "2026-12-12",
+      "endDate": "2026-12-13",
+      "source": "https://www.doujin.com.tw/events/info/2356",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2553",
+      "name": "2026 高捷冬漫祭 ft. 美麗島桌遊節",
+      "region": "south",
+      "venue": "O5/R10高雄捷運美麗島站",
+      "startDate": "2026-12-12",
+      "endDate": "2026-12-13",
+      "source": "https://www.doujin.com.tw/events/info/2553",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2495",
+      "name": "FT04奇幻時光女性向同人創作交流展",
+      "region": "central",
+      "venue": "台中文化創意產業園區-雅堂館",
+      "startDate": "2026-12-19",
+      "endDate": "2026-12-19",
+      "source": "https://www.doujin.com.tw/events/info/2495",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2517",
+      "name": "《JOJO的奇妙冒險－黃金軌跡 The Golden Trajectory》",
+      "region": "north",
+      "venue": "[北部]樹心會館",
+      "startDate": "2026-12-19",
+      "endDate": "2026-12-19",
+      "source": "https://www.doujin.com.tw/events/info/2517",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2550",
+      "name": "KACG2612-高雄動漫城-12月真冬場",
+      "region": "south",
+      "venue": "高雄車站-B1｜高雄駅一番街 北站・南站-B2｜台鐵連通道-B3",
+      "startDate": "2026-12-19",
+      "endDate": "2026-12-20",
+      "source": "https://www.doujin.com.tw/events/info/2550",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2531",
+      "name": "皮諾丘的夢之旅04 台南娃場",
+      "region": "south",
+      "venue": "大臺南會展中心 會議棟1F 特展區",
+      "startDate": "2026-12-20",
+      "endDate": "2026-12-20",
+      "source": "https://www.doujin.com.tw/events/info/2531",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2513",
+      "name": "GJ36動漫創作展",
+      "region": "central",
+      "venue": "台中-臺體大體育館",
+      "startDate": "2026-12-26",
+      "endDate": "2026-12-27",
+      "source": "https://www.doujin.com.tw/events/info/2513",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2519",
+      "name": "偶像星願場內ONLY",
+      "region": "central",
+      "venue": "台中-臺體大體育館",
+      "startDate": "2026-12-26",
+      "endDate": "2026-12-26",
+      "source": "https://www.doujin.com.tw/events/info/2519",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2539",
+      "name": "CHAIN REACTION─煙叉ONLY",
+      "region": "central",
+      "venue": "台中-臺體大體育館",
+      "startDate": "2026-12-26",
+      "endDate": "2026-12-26",
+      "source": "https://www.doujin.com.tw/events/info/2539",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2518",
+      "name": "Fighting 運動主題創作交流會",
+      "region": "central",
+      "venue": "台中-臺體大體育館",
+      "startDate": "2026-12-27",
+      "endDate": "2026-12-27",
+      "source": "https://www.doujin.com.tw/events/info/2518",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2525",
+      "name": "蔚藍檔案 Only7",
+      "region": "north",
+      "venue": "台北市客家文化中心",
+      "startDate": "2027-01-09",
+      "endDate": "2027-01-09",
+      "source": "https://www.doujin.com.tw/events/info/2525",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2522",
+      "name": "雜魚~雜魚~♥ メスガキ主題only",
+      "region": "north",
+      "venue": "台北市客家文化中心",
+      "startDate": "2027-01-10",
+      "endDate": "2027-01-10",
+      "source": "https://www.doujin.com.tw/events/info/2522",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2524",
+      "name": "曹氏宗親會-人妻主題同人創作交流會3",
+      "region": "north",
+      "venue": "台北市客家文化中心",
+      "startDate": "2027-01-10",
+      "endDate": "2027-01-10",
+      "source": "https://www.doujin.com.tw/events/info/2524",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2437",
+      "name": "【CWT-75】(台北場)",
+      "region": "north",
+      "venue": "國立台灣大學綜合體育館1F&3F&4F",
+      "startDate": "2027-02-13",
+      "endDate": "2027-02-14",
+      "source": "https://www.doujin.com.tw/events/info/2437",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2501",
+      "name": "Fancy Frontier開拓動漫祭 FF48",
+      "region": "north",
+      "venue": "花博公園 爭艷館",
+      "startDate": "2027-02-19",
+      "endDate": "2027-02-21",
+      "source": "https://www.doujin.com.tw/events/info/2501",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2567",
+      "name": "【CWT-K52】(高雄場)",
+      "region": "south",
+      "venue": "高雄展覽館北館1F",
+      "startDate": "2027-02-20",
+      "endDate": "2027-02-21",
+      "source": "https://www.doujin.com.tw/events/info/2567",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2497",
+      "name": "忍者旅行100%",
+      "region": "north",
+      "venue": "台北市客家文化中心",
+      "startDate": "2027-03-06",
+      "endDate": "2027-03-06",
+      "source": "https://www.doujin.com.tw/events/info/2497",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2566",
+      "name": "〔PS-04〕Phantasy Square 奇幻動漫祭-04",
+      "region": "south",
+      "venue": "臺南文化創意產業園區-1A香蕉商場",
+      "startDate": "2027-03-06",
+      "endDate": "2027-03-06",
+      "source": "https://www.doujin.com.tw/events/info/2566",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2533",
+      "name": "日本VOCALOID創作者連結-V²PN Ver. 2027",
+      "region": "north",
+      "venue": "台北市客家文化中心",
+      "startDate": "2027-03-20",
+      "endDate": "2027-03-21",
+      "source": "https://www.doujin.com.tw/events/info/2533",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2565",
+      "name": "Re:從零開始的異世界生活-北部ONLY《RE: Only》",
+      "region": "north",
+      "venue": "台北：郵政博物館10F大禮堂",
+      "startDate": "2027-03-27",
+      "endDate": "2027-03-27",
+      "source": "https://www.doujin.com.tw/events/info/2565",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2569",
+      "name": "【CWT-T37】(台中場)",
+      "region": "central",
+      "venue": "臺中世界貿易中心二館",
+      "startDate": "2027-04-10",
+      "endDate": "2027-04-11",
+      "source": "https://www.doujin.com.tw/events/info/2569",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2515",
+      "name": "綜合場【CooMIC 二元創庫 5】",
+      "region": "north",
+      "venue": "花博爭艷館",
+      "startDate": "2027-04-24",
+      "endDate": "2027-04-25",
+      "source": "https://www.doujin.com.tw/events/info/2515",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2409",
+      "name": "起始之歌2nd",
+      "region": "north",
+      "venue": "耕莘文教院",
+      "startDate": "2027-05-15",
+      "endDate": "2027-05-15",
+      "source": "https://www.doujin.com.tw/events/info/2409",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2500",
+      "name": "Petit Fancy亞洲動漫創作展 PF46",
+      "region": "north",
+      "venue": "花博公園 爭艷館",
+      "startDate": "2027-05-15",
+      "endDate": "2027-05-16",
+      "source": "https://www.doujin.com.tw/events/info/2500",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2537",
+      "name": "IF8創集繪 同人誌販售會",
+      "region": "north",
+      "venue": "花博公園 爭艷館",
+      "startDate": "2027-05-29",
+      "endDate": "2027-05-29",
+      "source": "https://www.doujin.com.tw/events/info/2537",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2538",
+      "name": "Bring It On！歐美主題ONLY場 BIO14",
+      "region": "north",
+      "venue": "花博公園 爭艷館",
+      "startDate": "2027-05-29",
+      "endDate": "2027-05-29",
+      "source": "https://www.doujin.com.tw/events/info/2538",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2438",
+      "name": "【CWT-76】(台北場)",
+      "region": "north",
+      "venue": "國立台灣大學綜合體育館1F&3F&4F",
+      "startDate": "2027-08-14",
+      "endDate": "2027-08-15",
+      "source": "https://www.doujin.com.tw/events/info/2438",
+      "booking": "open"
+    }
+  ]
+}

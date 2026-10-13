@@ -1,10 +1,10 @@
 (() => {
-  const track = document.getElementById('character-photo-track');
+  const track = document.getElementById('service-photo-track');
   if (track && window.COZ_CONTENT) {
-    const tiles = window.COZ_CONTENT.backgroundPhotos;
+    const tiles = window.COZ_CONTENT.serviceBackgroundPhotos || [];
     track.innerHTML = [0,1,2,3].map(column => {
       const photos = tiles.filter((number,index) => index%4 === column);
-      const group = '<div class="photo-group">' + photos.map(number => '<img src="/assets/clients/client-' + String(number).padStart(2,'0') + '.jpg" alt="" width="640" height="640" decoding="async">').join('') + '</div>';
+      const group = '<div class="photo-group">' + photos.map(path => '<img src="' + path + '" alt="" width="640" height="640" decoding="async">').join('') + '</div>';
       return '<div class="photo-column" style="--photo-count:' + photos.length + '"><div class="photo-column-track ' + (column%2?'drift-down':'drift-up') + '">' + group + group + '</div></div>';
     }).join('');
   }
@@ -32,6 +32,24 @@
     menu.addEventListener('focusout', event => { if (!menu.contains(event.relatedTarget)) close(); });
   }
   const search = document.getElementById('role-search');
+  document.querySelectorAll('details.role-group').forEach(group => {
+    const desktopHover = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const close = () => {
+      if (!search?.value.trim() && !group.contains(document.activeElement)) group.open = false;
+    };
+    group.addEventListener('pointerenter', () => { if (desktopHover()) group.open = true; });
+    group.addEventListener('pointerleave', () => { if (desktopHover()) close(); });
+    group.addEventListener('focusout', event => {
+      if (!group.contains(event.relatedTarget) && !group.matches(':hover')) close();
+    });
+    group.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && group.open) {
+        group.querySelector('summary').focus();
+        group.open = false;
+        event.preventDefault();
+      }
+    });
+  });
   if (search) {
     const en = document.documentElement.lang === 'en';
     const rows = [...document.querySelectorAll('[data-role]')];
@@ -46,7 +64,11 @@
         if (!row.hidden) count++;
       });
       document.querySelectorAll('.role-group').forEach(group => {
-        group.hidden = ![...group.querySelectorAll('[data-role]')].some(row => !row.hidden);
+        const matches = [...group.querySelectorAll('[data-role]')].filter(row => !row.hidden).length;
+        group.hidden = matches === 0;
+        if (group.tagName === 'DETAILS') group.open = !!query && matches > 0;
+        const countLabel = group.querySelector('.work-count');
+        if (countLabel) countLabel.textContent = en ? `${matches} characters` : `${matches} 位角色`;
       });
       status.textContent = en ? `${count} characters` : `共 ${count} 筆角色`;
       empty.hidden = count > 0;

@@ -16,3 +16,5 @@ Meta 官方圖像與商標屬其各自權利人所有。
 透明版更新：instagram.svg 與 facebook.png 使用 Wikimedia Commons 保存的 Meta 品牌素材，取代卡片白底圖。
 - https://commons.wikimedia.org/wiki/File:Instagram_Glyph_Gradient_RGB_logo.svg
 - https://commons.wikimedia.org/wiki/File:Facebook_Logo_2023.png
+
+- 2026-10-13：coz-logo.svg 及搜尋 favicon 以原 closet.png 品牌圖形製作，使用 SVG 遮罩移除 COSPLAY REUSE 小字；原始品牌檔保留。產生方式見 build-brand-assets.mjs。

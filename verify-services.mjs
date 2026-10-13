@@ -6,18 +6,19 @@ assert.equal(data.roles.length,53);
 assert.equal(data.roles.filter(role=>role.group==='main').length,53);
 assert.equal(data.roles.filter(role=>role.group==='partner').length,0);
 assert.deepEqual(data.packages.map(item=>item.price),[3499,4699,5699,3299]);
-assert.deepEqual(data.items.map(item=>item.price),[900,300,300,500,1200,850,1800,600,250]);
+assert.deepEqual(data.items.map(item=>item.price),[900,300,300,500,1200,950,1800,600,250]);
 assert.equal(data.items[0].unitZh,'／小時（2小時起約）');
 assert.equal(data.items[5].unitZh,'起');
 assert.equal(data.roles.find(role=>role.character==='大清初音').work,'初音');
 assert.equal(data.roles.find(role=>role.character==='阿蕾奇諾').size,'L & XL');
 for(const lang of ['zh','en']){
  const pricing=await readFile(lang==='zh'?'pricing-zh.html':'pricing.html','utf8');
- for(const amount of [3499,4699,5699,3299,900,300,500,1200,850,1800,600,250])assert.ok(pricing.includes('NT$'+amount.toLocaleString('en-US')));
+ for(const amount of [3499,4699,5699,3299,900,300,500,1200,950,1800,600,250])assert.ok(pricing.includes('NT$'+amount.toLocaleString('en-US')));
  const roles=await readFile(lang==='zh'?'characters-zh.html':'characters.html','utf8');
  assert.equal((roles.match(/<tr data-role /g)||[]).length,53);
  assert.ok(!/合作衣櫃|Partner closets|partner-closet/.test(roles));
- assert.ok(roles.includes('character-photo-track'));
+ assert.ok(roles.includes('service-photo-track'));
+ assert.ok(pricing.includes('service-photo-track'));
  assert.ok(roles.includes('--reveal-x:-24px')&&roles.includes('--reveal-x:24px'));
  assert.ok(!/NT\$|體驗補差價|皆需加200|造型假髮|未拆襪/.test(roles));
  assert.ok(roles.includes('id="role-search"'));
@@ -29,7 +30,7 @@ const node=()=>({hidden:false,listeners:{},attrs:{},addEventListener(name,callba
 const button=node(),panel=node(),search=node(),status=node(),empty=node();
 panel.hidden=true;search.value='';
 const rows=[{...node(),textContent:'原神 八重神子 M'},{...node(),textContent:'初音 大清初音 ML'}];
-const group={...node(),querySelectorAll:()=>rows};
+const group={...node(),querySelectorAll:()=>rows,querySelector:()=>null};
 const menu={querySelector:selector=>selector==='button'?button:panel,contains:target=>[button,panel].includes(target),addEventListener:(name,cb)=>events['menu:'+name]=cb};
 vm.runInNewContext(await readFile('service-ui.js','utf8'),{
  document:{documentElement:{lang:'zh-Hant'},querySelector:()=>menu,querySelectorAll:selector=>selector==='[data-role]'?rows:selector==='.role-group'?[group]:[],getElementById:id=>({'role-search':search,'role-count':status,'role-empty':empty})[id],addEventListener:(name,cb)=>events[name]=cb},
@@ -42,3 +43,4 @@ search.value='不存在的角色';search.listeners.input();assert.equal(empty.hi
 search.value='';search.listeners.input();assert.equal(status.textContent,'共 2 筆角色');assert.equal(group.hidden,false);
 button.listeners.click();events.click({target:{}});assert.equal(panel.hidden,true);
 console.log('Services: 13 prices, 53 roles, public-only fields, search and menu keyboard behavior OK');
+

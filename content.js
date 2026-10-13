@@ -1,6 +1,8 @@
 // 編輯服務文字與正式入口的集中設定；不包含任何登入憑證。
 window.COZ_CONTENT = {
   backgroundPhotos: [11,2,13,4,5,16,7,18,19,10,1,12,3,14,15,6,17,8,9,20],
+  // Official IG portraits downloaded on 2026-10-13; separate from homepage photos.
+  serviceBackgroundPhotos: ['assets/services/service-01.jpg','assets/services/service-02.jpg','assets/services/service-03.jpg','assets/services/service-04.jpg','assets/services/service-05.jpg','assets/services/service-06.jpg','assets/services/service-07.jpg','assets/services/service-08.jpg','assets/services/service-09.jpg'],
   links: {
     instagram: 'https://www.instagram.com/cozcos_cosplay/',
     facebook: 'https://www.facebook.com/p/COz-Cos-61573635958506/',

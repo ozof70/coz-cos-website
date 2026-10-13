@@ -52,7 +52,7 @@ assert.equal(firstVisit.scripts.length, 1, 'Preference changes must not duplicat
 assert.equal(run({ hostname: 'www.cozcos.com', choice: 'accepted' }).scripts.length, 1);
 const actual = run({ ...configuration.window.COZ_ANALYTICS, choice: 'accepted' });
 assert.equal(actual.scripts[0].src, 'https://www.googletagmanager.com/gtag/js?id=' + configuration.window.COZ_ANALYTICS.measurementId);
-for (const page of ['index.html','en.html','zh.html','about.html','about-zh.html','faq.html','faq-zh.html','privacy.html','pricing.html','pricing-zh.html','characters.html','characters-zh.html']) {
+for (const page of ['index.html','en.html','zh.html','about.html','about-zh.html','faq.html','faq-zh.html','privacy.html','pricing.html','pricing-zh.html','characters.html','characters-zh.html','events.html','events-zh.html']) {
   const html = await readFile(page, 'utf8');
   assert.ok(html.includes('src="/analytics-config.js" defer'));
   assert.ok(html.includes('src="/analytics.js" defer'));
