@@ -7,9 +7,11 @@
 - 下方歷史紀錄依日期累積；最新設定以此節、content.js 與生成的 HTML 為準。
 - 目前使用 Huninn 圓體、漫畫風標題及英文標語 Bring Your Character to Life.；20 張背景照片分成四欄，上、下、上、下輪動。沒有「暫停照片」按鈕。
 - 五個玻璃平台入口與名稱一起在向下捲動到聯絡區時出現，點擊直接前往平台。
-- 中英文 About 與 FAQ 頁、每語言 11 則常見問題、搜尋與分享資訊均已完成。
+- 中英文 About、FAQ、服務價目表與角色列表已完成；每語言 11 則常見問題、搜尋與分享資訊均已完成。
 - Netlify 沿用 stellar-pothos-be4f0b；不要建立新站點。GitHub 存放原始碼，不連接自動部署。一般修改先留在本機。
-- 流量統計採 Google Analytics 4；目前等待服務條款確認，尚未接入正式站。詳見 [ANALYTICS.md](ANALYTICS.md)。
+- 流量統計採 Google Analytics 4，評估 ID G-VN7FHRQ8FH；接入程式、選擇開關與隱私說明已於 2026-10-13 上線。訪客同意後才收集；後台實際收件仍須確認。詳見 [ANALYTICS.md](ANALYTICS.md)。
+- 2026-10-13 正式版本：右上角服務選單、中英價目表（4 種套餐、9 種單項服務）及可搜尋的 53 筆角色（47 主清單、6 合作衣櫃）。service-data.json 集中管理內容，service-pages.mjs 生成頁面；更新後依序執行 build-seo.mjs、verify-seo.mjs、verify-services.mjs、verify-analytics.mjs，再執行 package.ps1。
+- 本次 Netlify deploy：6acda1c0837c6cb48b2dc44f，沿用既有站點與 DNS。之後仍只在重大更新或明確要求時部署。
 
 ## 初版與修改紀錄
 

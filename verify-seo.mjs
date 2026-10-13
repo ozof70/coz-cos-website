@@ -1,5 +1,5 @@
 import {readFile,access} from 'node:fs/promises';
-const files=['index.html','en.html','zh.html','about.html','about-zh.html','faq.html','faq-zh.html'];
+const files=['index.html','en.html','zh.html','about.html','about-zh.html','faq.html','faq-zh.html','pricing.html','pricing-zh.html','characters.html','characters-zh.html'];
 for(const file of files){
  const html=await readFile(file,'utf8');
  const canonical=html.match(/rel="canonical" href="([^"]+)"/)?.[1];
@@ -20,6 +20,6 @@ for(const file of files){
  console.log(`${file}: canonical, languages, schema and local links OK`);
 }
 const sitemap=await readFile('sitemap.xml','utf8');
-if((sitemap.match(/<loc>/g)||[]).length!==6)throw Error('Sitemap must contain six public pages');
+if((sitemap.match(/<loc>/g)||[]).length!==10)throw Error('Sitemap must contain ten public pages');
 await access('assets/social-card-v2.jpg');
 console.log('Sitemap and share image OK');

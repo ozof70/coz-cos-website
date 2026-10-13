@@ -1,5 +1,6 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import vm from 'node:vm';
+import {serviceMenu,buildServicePages} from './service-pages.mjs';
 const sandbox={window:{}};
 vm.runInNewContext(await readFile('content.js','utf8'),sandbox);
 const content=sandbox.window.COZ_CONTENT;
@@ -23,7 +24,7 @@ const faq={
  ['COz Cos 在做什麼？','COz Cos 提供 Cosplay 一條龍體驗，涵蓋妝容、服裝與攝影，也提供服裝租借與出售、Cos 妝實體教學、中北部代妝、閒魚／淘寶代購與出角小物。'],
  ['COz Cos 的服務據點在哪裡？','服務據點位於新北・鶯歌車站附近 ／ 台中・南屯捷運附近。實際地點與當日服務安排，請透過官方 Instagram 私訊確認。'],
  ['如何預約妝容、攝影體驗或教學？','請私訊 Instagram @cozcos_cosplay，提供想體驗的服務、角色、預計日期與希望的地區，以便詢問檔期與報價。'],
- ['服務價格與檔期如何確認？','請透過官方 Instagram 私訊詢問。官網未公布固定價格；實際費用、服務內容與可預約時間，以雙方確認的資訊為準。'],
+ ['服務價格與檔期如何確認？','可先查看官網的服務價目表，了解套餐與單項服務價格。角色服裝、學生方案資格、其他需求與檔期，請透過官方 Instagram 私訊確認，實際安排以雙方確認的資訊為準。'],
  ['共享衣櫃是什麼？','COz Cos 共享衣櫃是 Cosplay 服裝租借與分享平台。可前往 closet.cozcos.com 查看服裝與平台資訊，租期、尺寸及其他條件請依平台及衣主提供的資訊確認。'],
  ['在哪裡購買出角小物？','出角小物可前往 COz Cos 的賣貨便補給站查看。商品、庫存、運送與付款資訊，以該賣場顯示及確認的內容為準。'],
  ['官網可以直接付款或完成預約嗎？','目前官網主要提供品牌與服務介紹，以及五個官方平台入口。詢問與預約請透過 IG 私訊，購物與租借請前往對應平台。'],
@@ -36,7 +37,7 @@ const faq={
  ['What does COz Cos do?','COz Cos offers complete cosplay experiences covering makeup, costumes and photography, as well as costume rentals and sales, in-person cosplay makeup lessons, makeup services in northern and central Taiwan, Xianyu and Taobao purchasing assistance, and cosplay essentials.'],
  ['Where are the service locations?','Our service locations are near Yingge Train Station in New Taipei and Nantun MRT Station in Taichung. Please message our official Instagram to confirm the exact location and service arrangements.'],
  ['How can I ask about a booking or lesson?','Message @cozcos_cosplay on Instagram with the service you want, your character, preferred date and region to ask about availability and a quote.'],
- ['How do I confirm prices and availability?','Please ask through our official Instagram. This website does not publish fixed prices; fees, service details and availability should be confirmed with us directly.'],
+ ['How do I confirm prices and availability?','See our service price list for package and individual service prices. Confirm costumes, student eligibility, other requirements and availability through our official Instagram before booking.'],
  ['What is the Shared Closet?','COz Cos Shared Closet is a cosplay costume rental and sharing platform at closet.cozcos.com. Check the platform and costume owner’s information for sizing, rental periods and other conditions.'],
  ['Where can I buy cosplay essentials?','Visit the COz Cos Myship shop. Products, stock, shipping and payment details are subject to the information shown and confirmed in that shop.'],
  ['Can I pay or complete a booking on this website?','This website introduces our brand and services and links to five official channels. Please message Instagram for inquiries and bookings, and use the relevant platform for shopping or rentals.'],
@@ -56,14 +57,17 @@ function head(lang,path,title,description,extraType='WebPage',questions=null){
 <meta property="og:type" content="website"><meta property="og:site_name" content="COz Cos"><meta property="og:locale" content="${lang==='en'?'en_US':'zh_TW'}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${origin+path}"><meta property="og:image" content="${origin}/assets/social-card-v2.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="COz Cos — Bring Your Character to Life. Cosplay makeup, costumes and photography in Taiwan.">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${origin}/assets/social-card-v2.jpg">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+<script src="/analytics-config.js" defer></script><script src="/analytics.js" defer></script>
+<script src="/service-ui.js" defer></script>
 <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph}).replaceAll('<','\\u003c')}</script>
 </head>`;
 }
-function footer(lang){const zh=lang==='zh';return `<footer><span>© 2026 COz Cos.</span><nav class="footer-links" aria-label="${zh?'網站資訊':'Site information'}"><a href="${zh?'/about-zh.html':'/about.html'}">${zh?'關於我們':'About Us'}</a><a href="${zh?'/faq-zh.html':'/faq.html'}">${zh?'常見問題':'FAQ'}</a></nav><span>${content.languages[lang].credit}</span></footer>`;}
+function footer(lang){const zh=lang==='zh';return `<footer><span>© 2026 COz Cos.</span><nav class="footer-links" aria-label="${zh?'網站資訊':'Site information'}"><a href="${zh?'/about-zh.html':'/about.html'}">${zh?'關於我們':'About Us'}</a><a href="${zh?'/faq-zh.html':'/faq.html'}">${zh?'常見問題':'FAQ'}</a><a href="/privacy.html">${zh?'隱私與流量':'Privacy & analytics'}</a></nav><span>${content.languages[lang].credit}</span></footer>`;}
 const source=await readFile('index.html','utf8');
 for(const lang of ['en','zh']){
  const copy=content.languages[lang];const path=lang==='en'?'/en.html':'/';
  let home=source.replace(/<html lang="[^"]+">/,`<html lang="${lang==='en'?'en':'zh-Hant'}">`).replace(/<head>[\s\S]*?<\/head>/,head(lang,path,copy.title,descriptions[lang]).replace('</head>','<script src="/content.js" defer></script><script src="/app.js" defer></script></head>'));
+ home=home.replace(/<header class="header">[\s\S]*?<\/header>/,`<header class="header"><div class="header-actions">${serviceMenu(lang)}<button class="language-toggle" id="language-toggle" type="button" aria-label="${copy.toggleLabel}">${copy.toggle}</button></div></header>`);
  home=home.replace(/<p class="intro">[\s\S]*?<\/p>/,`<p class="intro">${copy.intro}</p>`).replace(/<h2 id="about-title">[\s\S]*?<\/h2>/,`<h2 id="about-title">${copy.aboutTitle}</h2>`).replace(/(<section class="about reveal"[\s\S]*?<\/h2>)<p>[\s\S]*?<\/p>/,`$1<p>${copy.about}</p>`).replace(/<p class="locations">[\s\S]*?<\/p>/,`<p class="locations">${copy.locations}</p>`).replace(/<h2 id="contact-title">[\s\S]*?<\/h2>/,`<h2 id="contact-title">${copy.contact}</h2>`).replace(/<p class="contact-note">[\s\S]*?<\/p>/,`<p class="contact-note">${copy.note}</p>`).replace(/<footer>[\s\S]*?<\/footer>/,footer(lang).replace('2026','<span id="year">2026</span>')).replace(/(<button class="language-toggle"[^>]*aria-label=")[^"]*(">)[\s\S]*?<\/button>/,`$1${copy.toggleLabel}$2${copy.toggle}</button>`);
  await writeFile(lang==='en'?'en.html':'index.html',home);
  if(lang==='zh') await writeFile('zh.html',home);
@@ -91,15 +95,21 @@ for(const lang of ['en','zh']){
   await writeFile(file,html);
  }
 }
-const urls=['/','/en.html','/about.html','/about-zh.html','/faq.html','/faq-zh.html'];
-await writeFile('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(path=>`<url><loc>${origin+path}</loc><lastmod>2026-10-11</lastmod></url>`).join('')+'</urlset>\n');
+for(const lang of ['en','zh'])for(const kind of ['about','faq']){
+ const file=kind+(lang==='zh'?'-zh':'')+'.html';
+ const html=await readFile(file,'utf8');
+ await writeFile(file,html.replace(/(<a class="language-toggle"[\s\S]*?<\/a>)<\/header>/,`<div class="header-actions">${serviceMenu(lang)}$1</div></header>`));
+}
+await buildServicePages(head,footer);
+const urls=['/','/en.html','/about.html','/about-zh.html','/faq.html','/faq-zh.html','/pricing.html','/pricing-zh.html','/characters.html','/characters-zh.html'];
+await writeFile('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(path=>`<url><loc>${origin+path}</loc><lastmod>2026-10-13</lastmod></url>`).join('')+'</urlset>\n');
 await writeFile('robots.txt',`User-agent: *\nAllow: /\nDisallow: /share-preview.html\nSitemap: ${origin}/sitemap.xml\n`);
-await writeFile('llms.txt',`# COz Cos\n\n> COz Cos is a cosplay service brand in Taiwan. Services include makeup, costumes and photography experiences, costume rentals and sales, in-person makeup lessons, makeup services in northern and central Taiwan, and Xianyu/Taobao purchasing assistance.\n\n## Official information\n- [English homepage](${origin}/en.html)\n- [繁體中文首頁](${origin}/)\n- [About COz Cos](${origin}/about.html)\n- [關於我們](${origin}/about-zh.html)\n- [Frequently asked questions](${origin}/faq.html)\n- [常見問題](${origin}/faq-zh.html)\n\n## Locations\n新北・鶯歌車站附近 ／ 台中・南屯捷運附近。Near Yingge Train Station, New Taipei and Nantun MRT Station, Taichung. Exact locations, availability and pricing must be confirmed through official Instagram. No fixed price or full street address is published here.\n\n## Official platforms\n${Object.entries(content.links).map(([key,url])=>`- [${key}](${url})`).join('\n')}\n\nLast updated: 2026-10-11.\n`);
+await writeFile('llms.txt',`# COz Cos\n\n> COz Cos is a cosplay service brand in Taiwan. Services include makeup, costumes and photography experiences, costume rentals and sales, in-person makeup lessons, makeup services in northern and central Taiwan, and Xianyu/Taobao purchasing assistance.\n\n## Official information\n- [English homepage](${origin}/en.html)\n- [繁體中文首頁](${origin}/)\n- [About COz Cos](${origin}/about.html)\n- [關於我們](${origin}/about-zh.html)\n- [Frequently asked questions](${origin}/faq.html)\n- [常見問題](${origin}/faq-zh.html)\n- [服務價目表](${origin}/pricing-zh.html)\n- [Service prices](${origin}/pricing.html)\n- [圓夢角色列表](${origin}/characters-zh.html)\n- [Character list](${origin}/characters.html)\n\n## Locations\n新北・鶯歌車站附近 ／ 台中・南屯捷運附近。Near Yingge Train Station, New Taipei and Nantun MRT Station, Taichung. Exact locations, availability and pricing must be confirmed through official Instagram. Package and individual service prices are published on the price list; no full street address is published here.\n\n## Official platforms\n${Object.entries(content.links).map(([key,url])=>`- [${key}](${url})`).join('\n')}\n\nLast updated: 2026-10-13.\n`);
 // A code-native, dedicated share card; the raster export is generated in the browser.
 const logo=(await readFile('assets/closet.png')).toString('base64');
 const photos=await Promise.all([1,3,5,8].map(async n=>(await readFile(`assets/clients/client-${String(n).padStart(2,'0')}.jpg`)).toString('base64')));
 const card=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><defs><linearGradient id="shade"><stop stop-color="#0b0f12"/><stop offset="1" stop-color="#0b0f12" stop-opacity=".35"/></linearGradient><clipPath id="corner"><rect x="750" y="40" width="410" height="550" rx="28"/></clipPath></defs><rect width="1200" height="630" fill="#0b0f12"/><g clip-path="url(#corner)">${photos.map((p,i)=>`<image href="data:image/jpeg;base64,${p}" x="${750+i%2*205}" y="${40+Math.floor(i/2)*275}" width="205" height="275" preserveAspectRatio="xMidYMid slice"/>`).join('')}<rect x="750" y="40" width="410" height="550" fill="#0b0f12" opacity=".38"/></g><rect width="1200" height="630" fill="url(#shade)"/><image href="data:image/png;base64,${logo}" x="64" y="72" width="80" height="90"/><text x="170" y="139" fill="#f4eee3" font-family="Arial,sans-serif" font-size="66" font-weight="700">COz Cos</text><text x="64" y="272" fill="#f4eee3" font-family="Arial,sans-serif" font-size="48" font-weight="700">Bring Your Character</text><text x="64" y="336" fill="#f4eee3" font-family="Arial,sans-serif" font-size="48" font-weight="700">to Life.</text><rect x="64" y="384" width="62" height="3" fill="#b8c3ab"/><text x="64" y="440" fill="#d0cabe" font-family="Arial,Microsoft JhengHei,sans-serif" font-size="24">Cosplay 妝容・服裝・攝影體驗</text><text x="64" y="490" fill="#b8c3ab" font-family="Arial,Microsoft JhengHei,sans-serif" font-size="20">新北鶯歌車站附近 / 台中南屯捷運附近</text><text x="64" y="566" fill="#d0cabe" font-family="Arial,sans-serif" font-size="22" letter-spacing="3">COZCOS.COM</text></svg>`;
 await writeFile('assets/social-card.svg',card);
 await writeFile('share-preview.html','<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>COz Cos — Social Preview</title><style>html,body{margin:0;background:#0b0f12;width:1200px;height:630px;overflow:hidden}img{display:block;width:1200px;height:630px}</style></head><body><img src="/assets/social-card.svg" alt="COz Cos social sharing preview" width="1200" height="630"></body></html>');
-console.log('Generated six bilingual pages, metadata, schema, sitemap, llms.txt and share preview.');
+console.log('Generated ten bilingual pages, metadata, schema, sitemap, llms.txt and share preview.');
 
