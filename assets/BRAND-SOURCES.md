@@ -18,3 +18,4 @@ Meta 官方圖像與商標屬其各自權利人所有。
 - https://commons.wikimedia.org/wiki/File:Facebook_Logo_2023.png
 
 - 2026-10-13：coz-logo.svg 及搜尋 favicon 以原 closet.png 品牌圖形製作，使用 SVG 遮罩移除 COSPLAY REUSE 小字；原始品牌檔保留。產生方式見 build-brand-assets.mjs。
+- wig-avatar.jpg：2026-10-13 從使用者提供的官方假髮帳號 https://www.instagram.com/cozcos_cos.wig/ 下載頭貼，保留原始圖像，作為假髮研究室聯絡入口。

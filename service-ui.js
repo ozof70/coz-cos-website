@@ -1,4 +1,5 @@
-(() => {
+(async () => {
+  await window.COZ_ROLES_READY;
   const track = document.getElementById('service-photo-track');
   if (track && window.COZ_CONTENT) {
     const tiles = window.COZ_CONTENT.serviceBackgroundPhotos || [];

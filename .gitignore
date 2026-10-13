@@ -10,3 +10,5 @@ update-language.mjs
 update-beginner-seo.mjs
 .github-upload/
 photo-originals/
+.local-admin.json
+.local-data/

@@ -8,6 +8,7 @@
   const key = 'coz-analytics-choice';
   const en = document.documentElement.lang === 'en';
   let loaded = false;
+  let visitRecorded = false;
   const readChoice = () => {
     try { return localStorage.getItem(key); } catch { return null; }
   };
@@ -18,6 +19,7 @@
     try { const url = new URL(value); return url.origin + url.pathname; } catch { return ''; }
   };
   function start() {
+    if (!visitRecorded) { visitRecorded = true; fetch('/api/cms?action=visit', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,path:location.pathname}),keepalive:true}).catch(()=>{}); }
     window['ga-disable-' + id] = false;
     if (loaded) {
       window.gtag('consent', 'update', { analytics_storage: 'granted' });

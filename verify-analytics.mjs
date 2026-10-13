@@ -19,7 +19,7 @@ function run({ hostname = 'cozcos.com', protocol = 'https:', enabled = true, mea
   }
   const values = new Map(choice ? [['coz-analytics-choice', choice]] : []);
   const window = { COZ_ANALYTICS: { enabled, measurementId } };
-  const sandbox = { window, URL, Date, location: { protocol, hostname, href: `${protocol}//${hostname}/?email=private@example.com#contact` },
+  const sandbox = { fetch:async()=>({ok:true}),window, URL, Date, location: { protocol, hostname, href: `${protocol}//${hostname}/?email=private@example.com#contact` },
     localStorage: { getItem: key => values.get(key) ?? null, setItem: (key, value) => values.set(key, value) },
     document: { documentElement: { lang: 'zh-Hant' }, referrer: 'https://example.com/?secret=123', cookie: '',
       head: { append: node => scripts.push(node) }, body: { append: node => nodes.push(node) },

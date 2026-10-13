@@ -17,8 +17,8 @@ for(const lang of ['zh','en']){
  const roles=await readFile(lang==='zh'?'characters-zh.html':'characters.html','utf8');
  assert.equal((roles.match(/<tr data-role /g)||[]).length,53);
  assert.ok(!/合作衣櫃|Partner closets|partner-closet/.test(roles));
- assert.ok(roles.includes('service-photo-track'));
- assert.ok(pricing.includes('service-photo-track'));
+ assert.ok(!roles.includes('service-photo-track'));
+ assert.ok(!pricing.includes('service-photo-track'));
  assert.ok(roles.includes('--reveal-x:-24px')&&roles.includes('--reveal-x:24px'));
  assert.ok(!/NT\$|體驗補差價|皆需加200|造型假髮|未拆襪/.test(roles));
  assert.ok(roles.includes('id="role-search"'));
@@ -32,8 +32,8 @@ panel.hidden=true;search.value='';
 const rows=[{...node(),textContent:'原神 八重神子 M'},{...node(),textContent:'初音 大清初音 ML'}];
 const group={...node(),querySelectorAll:()=>rows,querySelector:()=>null};
 const menu={querySelector:selector=>selector==='button'?button:panel,contains:target=>[button,panel].includes(target),addEventListener:(name,cb)=>events['menu:'+name]=cb};
-vm.runInNewContext(await readFile('service-ui.js','utf8'),{
- document:{documentElement:{lang:'zh-Hant'},querySelector:()=>menu,querySelectorAll:selector=>selector==='[data-role]'?rows:selector==='.role-group'?[group]:[],getElementById:id=>({'role-search':search,'role-count':status,'role-empty':empty})[id],addEventListener:(name,cb)=>events[name]=cb},
+await vm.runInNewContext(await readFile('service-ui.js','utf8'),{
+ window:{},document:{documentElement:{lang:'zh-Hant'},querySelector:()=>menu,querySelectorAll:selector=>selector==='[data-role]'?rows:selector==='.role-group'?[group]:[],getElementById:id=>({'role-search':search,'role-count':status,'role-empty':empty})[id],addEventListener:(name,cb)=>events[name]=cb},
  matchMedia:()=>({matches:true})
 });
 button.listeners.click();assert.equal(panel.hidden,false);assert.equal(button.attrs['aria-expanded'],'true');

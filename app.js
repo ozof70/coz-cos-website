@@ -6,7 +6,7 @@
     const group = '<div class="photo-group">' + photos.map(number => '<img src="assets/clients/client-' + String(number).padStart(2,'0') + '.jpg" alt="" width="640" height="640" decoding="async">').join('') + '</div>';
     return '<div class="photo-column" style="--photo-count:' + photos.length + '"><div class="photo-column-track ' + (column%2 ? 'drift-down' : 'drift-up') + '">' + group + group + '</div></div>';
   }).join('');
-  const entries = [{key:'instagram',name:'Instagram',file:'instagram.svg'},{key:'facebook',name:'Facebook',file:'facebook.png'},{key:'threads',name:'Threads',file:'threads.webp'},{key:'closet',file:'closet.png'},{key:'shop',file:'myship.svg'}];
+  const entries = [{key:'instagram',name:'Instagram',file:'instagram.svg'},{key:'facebook',name:'Facebook',file:'facebook.png'},{key:'threads',name:'Threads',file:'threads.webp'},{key:'closet',file:'closet.png'},{key:'shop',file:'myship.svg'},{key:'wig',file:'wig-avatar.jpg'}];
   const socialLinks = document.querySelector('#social-links');
   socialLinks.innerHTML = entries.map((item,index) => '<a class="icon-link icon-' + item.key + ' icon-enter" href="' + content.links[item.key] + '" target="_blank" rel="noopener noreferrer" style="--delay:' + index*150 + 'ms;--label-direction:' + (index%2?24:-24) + 'px;--label-delay:' + index*90 + 'ms"><span class="icon-visual"><img src="assets/' + item.file + '" alt="" class="brand-icon"></span><span class="icon-label" aria-hidden="true"></span></a>').join('');
   const language = document.documentElement.lang === 'zh-Hant' ? 'zh' : 'en';

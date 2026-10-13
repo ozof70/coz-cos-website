@@ -8,7 +8,8 @@ window.COZ_CONTENT = {
     facebook: 'https://www.facebook.com/p/COz-Cos-61573635958506/',
     threads: 'https://www.threads.com/@cozcos_cosplay',
     closet: 'https://closet.cozcos.com/',
-    shop: 'https://myship.7-11.com.tw/general/detail/GM2610037363470'
+    shop: 'https://myship.7-11.com.tw/general/detail/GM2610037363470',
+    wig: 'https://www.instagram.com/cozcos_cos.wig/'
   },
   services: [
     { title: 'Cosplay 一條龍體驗', english: 'THE COMPLETE EXPERIENCE', description: '從角色妝容、服裝到攝影，讓出角準備與體驗串成一段完整的故事。', link: 'instagram', action: '詢問體驗' },
@@ -31,9 +32,9 @@ window.COZ_CONTENT.languages = {
     note: 'Bookings, our work, and more — choose a channel below.',
     credit: 'Photos: COz Cos official Instagram',
     toggle: '中文', toggleLabel: '切換為中文',
-    closet: 'Shared Closet', shop: 'Myship Shop',
+    closet: 'Shared Closet', shop: 'Myship Shop', wig: 'Wig Studio',
     firstClick: 'First click reveals names; second click opens a new tab',
-    open: 'Opens in a new tab', linksLabel: 'The five official COz Cos channels'
+    open: 'Opens in a new tab', linksLabel: 'The six official COz Cos channels'
   },
   zh: {
     title: 'COz Cos｜Cosplay 一條龍體驗・角色妝容・服裝租借與攝影',
@@ -45,11 +46,12 @@ window.COZ_CONTENT.languages = {
     note: '預約、作品與更多資訊，都在這裡。點選平台即可前往。',
     credit: '客片來源：COz Cos 官方 Instagram',
     toggle: 'English', toggleLabel: 'Switch to English',
-    closet: '共享衣櫃', shop: '賣貨便',
+    closet: '共享衣櫃', shop: '賣貨便', wig: '假髮研究室',
     firstClick: '首次點擊顯示名稱，再次點擊另開分頁',
-    open: '另開分頁', linksLabel: 'COz Cos 的五個官方入口'
+    open: '另開分頁', linksLabel: 'COz Cos 的六個官方入口'
   }
 };
+
 
 
 

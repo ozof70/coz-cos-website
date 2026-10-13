@@ -13,3 +13,6 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
