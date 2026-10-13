@@ -43,3 +43,4 @@
 - 場次僅收錄未來四個月，北部與中部區塊預設收合。每週排程更新也要保留這個限制。
 - 本次本機完成並驗證，未部署。
 
+- 最新正式後台設定：登入鹽、密碼雜湊與簽章金鑰存在私密 Blobs coz-admin-private/configuration，僅 cozcos.com / www.cozcos.com 的伺服器讀取；取代先前 Functions 環境變數要求。不要改成 context=all 環境變數、不要將私密儲存或密鑰上傳 GitHub 或公開。
