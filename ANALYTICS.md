@@ -5,7 +5,7 @@
 - 網站原始碼：https://github.com/ozof70/coz-cos-website （私人儲存庫，帳戶 ozof70）
 - 統計服務：Google Analytics 4，管理帳戶 dennis02101014@gmail.com。
 - 2026-10-11：使用者已自行完成 Google 設定並提供評估 ID `G-VN7FHRQ8FH`。本機 analytics-config.js 已填入該 ID，enabled=true。資料串流名稱、資源 ID 與後台實際收件狀態仍須登入後確認；未聲稱已接收到正式站流量。
-- 使用者於 2026-10-13 明確要求將這批修改上線；GA4 追蹤程式、隱私說明與選擇開關已部署到正式站。Netlify deploy：6acda1c0837c6cb48b2dc44f；未修改 DNS 或建立自動部署。
+- 使用者於 2026-10-13 明確要求將這批修改上線；GA4 追蹤程式、隱私說明與選擇開關已部署到正式站。最終追加批次 Netlify deploy：6acda54feabbee6b63cedd2a；未修改 DNS 或建立自動部署。
 - 本機 analytics-config.js、analytics.js 與 privacy.html 已接入中英公開頁面與打包腳本。即使設定啟用，本機與 Netlify 預覽站也不會載入 Google tag；正式網域須經訪客允許才收集。
 - GitHub 登入已排除：使用官方 Git Credential Manager 明確選取已保存的 ozof70 帳戶；以既有 main 提交歷史為基底同步，不覆寫歷史。GitHub 未連接自動部署。
 

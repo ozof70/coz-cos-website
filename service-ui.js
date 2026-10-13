@@ -1,12 +1,29 @@
 (() => {
+  const track = document.getElementById('character-photo-track');
+  if (track && window.COZ_CONTENT) {
+    const tiles = window.COZ_CONTENT.backgroundPhotos;
+    track.innerHTML = [0,1,2,3].map(column => {
+      const photos = tiles.filter((number,index) => index%4 === column);
+      const group = '<div class="photo-group">' + photos.map(number => '<img src="/assets/clients/client-' + String(number).padStart(2,'0') + '.jpg" alt="" width="640" height="640" decoding="async">').join('') + '</div>';
+      return '<div class="photo-column" style="--photo-count:' + photos.length + '"><div class="photo-column-track ' + (column%2?'drift-down':'drift-up') + '">' + group + group + '</div></div>';
+    }).join('');
+  }
   const menu = document.querySelector('.service-menu');
   const button = menu?.querySelector('button');
   const panel = menu?.querySelector('.service-menu-panel');
   if (button && panel) {
     const close = () => { panel.hidden = true; button.setAttribute('aria-expanded', 'false'); };
+    const open = () => { panel.hidden = false; button.setAttribute('aria-expanded', 'true'); };
     button.addEventListener('click', () => {
+      if (matchMedia('(hover: hover) and (pointer: fine)').matches) { open(); return; }
       panel.hidden = !panel.hidden;
       button.setAttribute('aria-expanded', String(!panel.hidden));
+    });
+    menu.addEventListener('pointerenter', () => {
+      if (matchMedia('(hover: hover) and (pointer: fine)').matches) open();
+    });
+    menu.addEventListener('pointerleave', () => {
+      if (matchMedia('(hover: hover) and (pointer: fine)').matches && !menu.contains(document.activeElement)) close();
     });
     document.addEventListener('click', event => { if (!menu.contains(event.target)) close(); });
     document.addEventListener('keydown', event => {

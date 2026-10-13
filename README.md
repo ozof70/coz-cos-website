@@ -10,8 +10,10 @@
 - 中英文 About、FAQ、服務價目表與角色列表已完成；每語言 11 則常見問題、搜尋與分享資訊均已完成。
 - Netlify 沿用 stellar-pothos-be4f0b；不要建立新站點。GitHub 存放原始碼，不連接自動部署。一般修改先留在本機。
 - 流量統計採 Google Analytics 4，評估 ID G-VN7FHRQ8FH；接入程式、選擇開關與隱私說明已於 2026-10-13 上線。訪客同意後才收集；後台實際收件仍須確認。詳見 [ANALYTICS.md](ANALYTICS.md)。
-- 2026-10-13 正式版本：右上角服務選單、中英價目表（4 種套餐、9 種單項服務）及可搜尋的 53 筆角色（47 主清單、6 合作衣櫃）。service-data.json 集中管理內容，service-pages.mjs 生成頁面；更新後依序執行 build-seo.mjs、verify-seo.mjs、verify-services.mjs、verify-analytics.mjs，再執行 package.ps1。
-- 本次 Netlify deploy：6acda1c0837c6cb48b2dc44f，沿用既有站點與 DNS。之後仍只在重大更新或明確要求時部署。
+- 2026-10-13 版本：右上角服務選單、中英價目表（4 種套餐、9 種單項服務）及可搜尋的 53 筆圓夢角色，全部合併為同一主清單，不分合作衣櫃。service-data.json 集中管理內容，service-pages.mjs 生成頁面；更新後依序執行 build-seo.mjs、verify-seo.mjs、verify-services.mjs、verify-analytics.mjs，再執行 package.ps1。
+- 同批追加：服務按鈕移除箭頭，電腦滑過自動展開；選项與套餐卡片滑過亮起。服務頁標題減輕字重，底部使用官方 IG 的 client-11.jpg 原圖並附來源。角色列交錯從左、右進場，角色頁有四欄上下交錯的作品背景；減少動態設定下停用。首頁背景略為調亮，取景改向臉部上方，client-06/client-20 額外靠上取景。
+- 最終追加批次 Netlify deploy：6acda54feabbee6b63cedd2a，沿用既有站點與 DNS；所有追加調整完成後一起部署。之後仍只在重大更新或明確要求時部署。
+- 四種視窗寬度（375、768、1024、1440px）均以独立測試瀏覽器驗證五個主要頁面：無橫向溢出、選單/鍵盤/搜尋正常。另確認 53 列交錯進場、四欄圖片輪動、標題字重、滑過亮起與底部原圖載入。測試截圖位於 qa/，不納入 GitHub 或正式部署。
 
 ## 初版與修改紀錄
 
