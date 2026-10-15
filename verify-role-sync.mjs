@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import vm from 'node:vm';
+const original=JSON.parse(await readFile('service-data.json','utf8')).roles.map(({work,character,size})=>({work:work||'未註明作品',character,size}));
+const context={window:{},document:{querySelector:()=>null}};
+vm.runInNewContext(await readFile('dynamic-roles.js','utf8'),context);
+const merge=context.window.COZ_MERGE_ROLE_RESPONSE;
+assert.equal(merge({roles:[]},original).length,53,'Empty legacy response must preserve all original characters');
+assert.equal(merge({roles:[original[0]]},original).length,53,'Legacy additions must not duplicate existing characters');
+const added={work:original[0].work,character:'新增測試角色',size:'M'};
+assert.equal(merge({roles:[added]},original).length,54);
+const managed=[{...original[0],character:'已修改角色'},added];
+assert.equal(merge({rolesVersion:2,roles:managed},original),managed,'New complete responses must honor admin edits and deletions');
+assert.equal(merge({rolesVersion:2,roles:[]},original).length,0,'An explicitly complete, intentionally empty catalog is valid');
+assert.throws(()=>merge({rolesVersion:2,roles:[{}]},original));
+console.log('Role sync: 53 originals preserved with legacy API; additions, edits, deletions and invalid responses verified.');
