@@ -44,3 +44,5 @@
 - 本次本機完成並驗證，未部署。
 
 - 最新正式後台設定：登入鹽、密碼雜湊與簽章金鑰存在私密 Blobs coz-admin-private/configuration，僅 cozcos.com / www.cozcos.com 的伺服器讀取；取代先前 Functions 環境變數要求。不要改成 context=all 環境變數、不要將私密儲存或密鑰上傳 GitHub 或公開。
+- 2026-10-13 本批全數上線：Netlify 6acde3654d7292d74f86f91c、GitHub 77aec5c。正式登入與私密儲存已驗證成功，預覽網域不能使用管理員登入。中部標籤只寫中部；區域篩選維持最南到台中。
+- 最終正式版本更新為 Netlify 6acde45c4349f5a755486fb5、GitHub 0fe3d7b；登入後表單隱藏修正已驗證。
