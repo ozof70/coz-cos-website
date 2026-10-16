@@ -111,14 +111,20 @@
   const button = menu?.querySelector('button');
   const panel = menu?.querySelector('.service-menu-panel');
   if (button && panel) {
-    const close = () => { panel.hidden = true; button.setAttribute('aria-expanded', 'false'); };
-    button.addEventListener('click', () => {
-      panel.hidden = !panel.hidden;
-      button.setAttribute('aria-expanded', String(!panel.hidden));
+    let closeTimer;
+    const open = () => { clearTimeout(closeTimer); panel.hidden = false; button.setAttribute('aria-expanded', 'true'); };
+    const close = () => { clearTimeout(closeTimer); panel.hidden = true; button.setAttribute('aria-expanded', 'false'); };
+    button.addEventListener('click', event => {
+      if (event.detail > 0 && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        open();
+      } else if (panel.hidden) { open(); }
+      else close();
     });
-    // Disclosure opens by click; hover must not intercept the first click.
+    menu.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'mouse' && matchMedia('(hover: hover) and (pointer: fine)').matches) open();
+    });
     menu.addEventListener('pointerleave', () => {
-      if (matchMedia('(hover: hover) and (pointer: fine)').matches && !menu.contains(document.activeElement)) close();
+      if (matchMedia('(hover: hover) and (pointer: fine)').matches) closeTimer = setTimeout(close, 180);
     });
     document.addEventListener('click', event => { if (!menu.contains(event.target)) close(); });
     document.addEventListener('keydown', event => {

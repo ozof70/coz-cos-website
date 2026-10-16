@@ -46,3 +46,31 @@ assert.deepEqual(dashboard.roles,(await (await cms(request('content'))).json()).
 assert.equal((await cms(request('dashboard',null,{cookie:cookie+'tampered'}))).status,401);
 assert.equal((await cms(request('logout',{},headers))).status,200);
 console.log('CMS: authentication, cookies, origin/CSRF protection, validation, saved content and consent-based counters OK');
+
+const png={mime:'image/png',data:'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Zg9sAAAAASUVORK5CYII='};
+assert.equal((await cms(request('upload',png))).status,401);
+assert.equal((await cms(request('upload',png,{cookie}))).status,403);
+assert.equal((await cms(request('upload',{mime:'image/svg+xml',data:png.data},headers))).status,400);
+assert.equal((await cms(request('upload',{mime:'image/png',data:Buffer.from('not an image').toString('base64')},headers))).status,400);
+const uploaded=await cms(request('upload',png,headers));assert.equal(uploaded.status,201);const picture=await uploaded.json();
+const again=await (await cms(request('upload',png,headers))).json();assert.equal(picture.id,again.id);
+const imageResponse=await cms(new Request('https://cozcos.com/api/cms?action=image&id='+picture.id));assert.equal(imageResponse.status,200);assert.equal(imageResponse.headers.get('content-type'),'image/png');assert.equal(Buffer.from(await imageResponse.arrayBuffer()).toString('base64'),png.data);
+assert.equal((await cms(request('news',{title:'Gallery',body:'Text before images',images:['f'.repeat(32)]},headers))).status,400);
+assert.equal((await cms(request('news',{title:'Gallery',body:'Text before images',images:Array(9).fill(picture.id)},headers))).status,400);
+const illustrated=await (await cms(request('news',{title:'Gallery',body:'Text before images',images:[picture.id]},headers))).json();
+assert.equal((await cms(request('news',{operation:'update',id:illustrated.entry.id,title:'Edited',body:'Keep picture'},headers))).status,200);
+let gallery=(await (await cms(request('content'))).json()).news.find(n=>n.id===illustrated.entry.id);assert.deepEqual(gallery.images,[picture.id]);
+assert.equal((await cms(request('news',{operation:'update',id:gallery.id,title:'Edited',body:'Remove picture',images:[]},headers))).status,200);
+gallery=(await (await cms(request('content'))).json()).news.find(n=>n.id===gallery.id);assert.deepEqual(gallery.images,[]);
+console.log('Announcement images: authenticated uploads, MIME/size/reference validation, deduplication, binary reads and edit compatibility OK');
+
+const bilingual=await (await cms(request('news',{title:'中文公告',body:'中文內文',titleEn:' English title ',bodyEn:' English details ',images:[picture.id]},headers))).json();
+assert.equal(bilingual.entry.titleEn,'English title');assert.equal(bilingual.entry.bodyEn,'English details');
+const bilingualId=bilingual.entry.id;
+assert.equal((await cms(request('news',{operation:'update',id:bilingualId,title:'更新中文',body:'更新內文'},headers))).status,200);
+let translated=(await (await cms(request('content'))).json()).news.find(n=>n.id===bilingualId);
+assert.equal(translated.titleEn,'English title');assert.equal(translated.bodyEn,'English details');assert.deepEqual(translated.images,[picture.id]);
+for(const invalid of [{titleEn:42},{bodyEn:null},{titleEn:'a'.repeat(201)},{bodyEn:'a'.repeat(12001)}])assert.equal((await cms(request('news',{title:'中文',body:'內文',...invalid},headers))).status,400);
+assert.equal((await cms(request('news',{operation:'update',id:bilingualId,title:'中文',body:'內文',titleEn:'',bodyEn:''},headers))).status,200);
+translated=(await (await cms(request('content'))).json()).news.find(n=>n.id===bilingualId);assert.equal(translated.titleEn,'');assert.equal(translated.bodyEn,'');
+console.log('Bilingual news: translated create/read, legacy edits preserve English, explicit removal and field validation OK');

@@ -170,6 +170,10 @@ details.role-group>summary:focus-visible{outline:2px solid #c6d6b9;outline-offse
 .hero h1{animation-fill-mode:backwards}
 @media(max-width:560px){.hero-brand{gap:12px;padding:13px 18px;border-radius:25px;font-size:40px}.hero-brand .hero-logo{width:57px;height:64px}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.hero-brand{background:rgba(43,50,56,.88)}}
+
+
+
+
 /* Clearer package glass lets the moving photographs remain visible. */
 .price-card{background:linear-gradient(135deg,rgba(255,255,255,.065),rgba(12,18,24,.08) 55%,rgba(255,255,255,.025));backdrop-filter:blur(3px) saturate(125%);-webkit-backdrop-filter:blur(3px) saturate(125%);border-color:rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 8px 24px rgba(0,0,0,.12)}
 .price-card:hover,.price-card:focus-within{background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(12,18,24,.045) 55%,rgba(255,255,255,.045));border-color:rgba(220,235,208,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 24px rgba(184,195,171,.08)}
@@ -451,3 +455,32 @@ body:has(.admin-create-dialog[open]) { overflow: hidden; }
 .admin-back { margin: 26px 0 22px; min-height: 44px; padding: 10px 16px; border: 1px solid #ffffff35; border-radius: 22px; color: var(--ink); background: #ffffff08; font: inherit; cursor: pointer; }
 .admin-shortcuts button:focus-visible,.admin-back:focus-visible { outline: 2px solid #c6d6b9; outline-offset: 4px; }
 @media(max-width:560px) { .admin-shortcuts { grid-template-columns: 1fr; gap: 12px; } .admin-shortcuts button { min-height: 120px; padding: 22px; } }
+/* Announcement media follows the text; multiple images use native swipe scrolling. */
+.news-gallery{margin:0 22px 24px;min-width:0}.news-image-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;border-radius:14px;background:#0004;overscroll-behavior-x:contain}.news-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always}.news-slide img{display:block;width:100%;height:440px;max-height:65vh;object-fit:contain}.news-zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}.news-gallery-controls{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:12px}.news-gallery-controls button,.news-lightbox-close,.news-upload button{font:inherit;color:var(--ink);background:#ffffff12;border:1px solid #ffffff40;border-radius:12px;padding:9px 16px;cursor:pointer}.news-gallery-controls button:disabled{opacity:.35;cursor:default}.news-lightbox{width:min(1100px,95vw);max-width:95vw;max-height:95dvh;padding:16px;border:1px solid #ffffff40;border-radius:18px;background:#10171c;color:var(--ink)}.news-lightbox::backdrop{background:#000d}.news-lightbox .news-gallery{margin:12px 0 0}.news-lightbox .news-slide img{height:75dvh;max-height:75dvh}.news-lightbox-close{display:block;margin-left:auto}.news-upload{min-width:0;border:1px solid #ffffff30;border-radius:14px;padding:16px}.news-upload input{max-width:100%;font-size:14px}.news-upload-preview{display:grid;gap:10px}.news-upload-preview>div{display:flex;align-items:center;gap:10px;overflow-wrap:anywhere}.news-upload-preview img{width:64px;height:64px;object-fit:cover;border-radius:8px}.news-upload-preview button{margin-left:auto;flex-shrink:0;padding:7px 12px}.news-upload-preview span{min-width:0;overflow-wrap:anywhere}
+@media(max-width:560px){.news-gallery{margin:0 16px 18px}.news-slide img{height:300px;max-height:55vh}.news-lightbox{padding:10px}.news-lightbox .news-slide img{height:68dvh;max-height:68dvh}.news-gallery-controls button{padding:8px 12px}.news-upload{padding:12px}}
+/* Swipe pagination uses dots rather than previous/next controls. */
+.news-gallery-dots{justify-content:center;gap:2px;margin-top:8px}.news-gallery-controls .news-gallery-dot{display:grid;place-items:center;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:transparent;opacity:1}.news-gallery-dot::before{content:'';width:7px;height:7px;border-radius:50%;background:rgba(244,238,227,.35);transition:background .25s,transform .25s}.news-gallery-dot[aria-current=true]::before{background:#f4eee3;transform:scale(1.3)}.news-gallery-dot:focus-visible{outline:2px solid #c6d6b9;outline-offset:-4px}.news-image-track{scrollbar-width:none}.news-image-track::-webkit-scrollbar{display:none}
+@media(prefers-reduced-motion:reduce){.news-gallery-dot::before{transition:none}}
+/* Keep the glass outside the title's opacity animation so blur never pops in. */
+.hero h1{animation:none}
+.hero-brand{background:transparent;border-color:transparent;box-shadow:none;animation:hero-glass-settle 3s ease-in-out both}
+.hero-brand::before{background:radial-gradient(ellipse at 16% 0%,rgba(255,255,255,.3),transparent 55%),linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.07) 45%,rgba(255,255,255,.13));animation:hero-glass-tint 3s ease-in-out both}
+.hero-brand>img,.hero-brand>span,.hero-slogan{animation:arrive 1.3s ease backwards}
+@keyframes hero-glass-settle{
+  from{backdrop-filter:blur(0px) saturate(100%);-webkit-backdrop-filter:blur(0px) saturate(100%);border-color:rgba(255,255,255,.06);box-shadow:inset 0 1px 1px #fff0,inset 0 -1px 1px #fff0,0 14px 38px #0000}
+  to{backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border-color:rgba(255,255,255,.43);box-shadow:inset 0 1px 1px rgba(255,255,255,.6),inset 0 -1px 1px rgba(255,255,255,.14),0 14px 38px rgba(0,0,0,.22)}
+}
+@keyframes hero-glass-tint{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.hero-brand{animation:none;backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border-color:rgba(255,255,255,.43);box-shadow:inset 0 1px 1px rgba(255,255,255,.6),inset 0 -1px 1px rgba(255,255,255,.14),0 14px 38px rgba(0,0,0,.22)}.hero-brand::before{animation:none;opacity:1}.hero-brand>img,.hero-brand>span,.hero-slogan{animation:none}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.hero-brand{background:rgba(43,50,56,.88)}}
+
+/* Green stays visible at every stage; hover pauses the cycle without resetting it. */
+.news-nav,.service-menu-toggle{background:rgba(32,91,55,.94);color:#f4eee3;border-color:#a1cdac;backdrop-filter:blur(12px) saturate(130%);-webkit-backdrop-filter:blur(12px) saturate(130%);animation:nav-green-cycle 7s ease-in-out infinite}
+@keyframes nav-green-cycle{
+  0%,100%{background-color:rgba(32,91,55,.94);color:#f4eee3;border-color:#8abf99;box-shadow:inset 0 1px 1px #ffffff20,0 0 16px #7eb69010}
+  30%,70%{background-color:rgba(139,192,146,.92);color:#193c26;border-color:#bce0b9;box-shadow:inset 0 1px 1px #ffffff40,0 0 16px #7eb69028}
+  50%{background-color:rgba(218,239,208,.95);color:#193c26;border-color:#e3f3dc;box-shadow:inset 0 1px 1px #ffffff60,0 0 16px #b5d7a828}
+}
+@media(hover:hover) and (pointer:fine){.news-nav:hover,.service-menu-toggle:hover{animation-play-state:paused;background:rgba(24,73,43,.97)!important;color:#f4eee3!important;border-color:#96cba4!important;box-shadow:inset 0 2px 7px #0004!important}}
+.news-nav:active,.service-menu-toggle:active{background:rgba(24,73,43,.97)!important;color:#f4eee3!important;border-color:#96cba4!important}
+@media(prefers-reduced-motion:reduce){.news-nav,.service-menu-toggle{animation:none}}

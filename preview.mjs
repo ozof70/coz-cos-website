@@ -10,7 +10,7 @@ const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8',
 createServer(async(req,res)=>{try{
  const url=new URL(req.url,'http://'+req.headers.host);
  if(url.pathname==='/api/cms'){
-  let body='';for await(const chunk of req){body+=chunk;if(Buffer.byteLength(body)>32000){res.writeHead(413).end();return}}
+  let body='';for await(const chunk of req){body+=chunk;if(Buffer.byteLength(body)>3000000){res.writeHead(413).end();return}}
   const response=await cms(new Request(url,{method:req.method,headers:req.headers,body:['GET','HEAD'].includes(req.method)?undefined:body}));
   res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));return;
  }
@@ -18,3 +18,4 @@ createServer(async(req,res)=>{try{
  if(name.split('/').some(p=>p.startsWith('.'))||/^\/(server|netlify|photo-originals|node_modules)(\/|$)/.test(name)){res.writeHead(403).end();return;}
  const file=resolve(root,'.'+(name==='/'?'/index.html':name));if(!file.startsWith(root+sep)){res.writeHead(403).end();return;}const body=await readFile(file);res.writeHead(200,{'Content-Type':mime[extname(file)]||'application/octet-stream'}).end(body);
  }catch{res.writeHead(404).end('Not found');}}).listen(4173,'127.0.0.1',()=>console.log('Local: http://localhost:4173'));
+

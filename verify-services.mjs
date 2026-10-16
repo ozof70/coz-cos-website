@@ -34,14 +34,14 @@ const group={...node(),querySelectorAll:()=>rows,querySelector:()=>null};
 const menu={querySelector:selector=>selector==='button'?button:panel,contains:target=>[button,panel].includes(target),addEventListener:(name,cb)=>events['menu:'+name]=cb};
 await vm.runInNewContext(await readFile('service-ui.js','utf8'),{
  window:{addEventListener(){},COZ_ROLES_READY:new Promise(()=>{})},document:{documentElement:{lang:'zh-Hant'},querySelector:selector=>selector==='.service-menu'?menu:null,querySelectorAll:selector=>selector==='[data-role]'?rows:selector==='.role-group'?[group]:[],getElementById:id=>({'role-search':search,'role-count':status,'role-empty':empty})[id],addEventListener:(name,cb)=>events[name]=cb},
- matchMedia:()=>({matches:true})
+ setTimeout,clearTimeout,matchMedia:()=>({matches:true})
 });
-button.listeners.click();assert.equal(panel.hidden,false);assert.equal(button.attrs['aria-expanded'],'true');
+button.listeners.click({detail:0});assert.equal(panel.hidden,false);assert.equal(button.attrs['aria-expanded'],'true');
 events.keydown({key:'Escape'});assert.equal(panel.hidden,true);assert.equal(button.focused,true);
 search.value=' 八重神子 ';search.listeners.input();assert.equal(rows[0].hidden,false);assert.equal(rows[1].hidden,true);assert.equal(status.textContent,'共 1 筆角色');
 search.value='不存在的角色';search.listeners.input();assert.equal(empty.hidden,false);assert.equal(group.hidden,true);
 search.value='';search.listeners.input();assert.equal(status.textContent,'共 2 筆角色');assert.equal(group.hidden,false);
-button.listeners.click();events.click({target:{}});assert.equal(panel.hidden,true);
+button.listeners.click({detail:0});events.click({target:{}});assert.equal(panel.hidden,true);
 console.log('Services: 13 prices, 53 roles, public-only fields, search and menu keyboard behavior OK');
 
 // Role nodes arriving after the API response must join the same reveal observer.

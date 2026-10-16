@@ -46,3 +46,7 @@
 - 最新正式後台設定：登入鹽、密碼雜湊與簽章金鑰存在私密 Blobs coz-admin-private/configuration，僅 cozcos.com / www.cozcos.com 的伺服器讀取；取代先前 Functions 環境變數要求。不要改成 context=all 環境變數、不要將私密儲存或密鑰上傳 GitHub 或公開。
 - 2026-10-13 本批全數上線：Netlify 6acde3654d7292d74f86f91c、GitHub 77aec5c。正式登入與私密儲存已驗證成功，預覽網域不能使用管理員登入。中部標籤只寫中部；區域篩選維持最南到台中。
 - 最終正式版本更新為 Netlify 6acde45c4349f5a755486fb5、GitHub 0fe3d7b；登入後表單隱藏修正已驗證。
+
+- 2026-10-16 公告圖片：可新增／編輯最多8張JPG、PNG、WebP，圖片顯示於內文下方，單張點擊放大、多張橫向滑動。news-media.js 負責上傳壓縮、編輯器及相簿；server/cms.mjs 提供有登入、來源與CSRF保護的上傳。圖片保存在既有CMS的images/，公告以images陣列引用ID。不要清空正式圖片或公告。此次僅本機，尚未部署。
+
+- 2026-10-16 公告新增選填 titleEn／bodyEn：英文頁優先使用對應英文欄位，空白則顯示中文並標示語言。圖片中英文共用；不自動呼叫翻譯服務。舊資料及未傳入英文字段的修改保留既有內容。本次僅本機，尚未部署。
