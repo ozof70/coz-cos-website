@@ -1,0 +1,41 @@
+name: Website checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Verify backend authentication and bilingual announcements
+        run: node verify-cms.mjs
+      - name: Verify metadata and local links
+        run: node verify-seo.mjs
+      - name: Verify service content and menu behavior
+        run: node verify-services.mjs
+      - name: Verify event scope and source failure guards
+        run: node verify-events.mjs
+      - name: Verify consent-based analytics
+        run: node verify-analytics.mjs
+      - name: Verify role synchronization
+        run: node verify-role-sync.mjs
+      - name: Verify loading and retry states
+        run: node verify-loading.mjs
