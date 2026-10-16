@@ -107,6 +107,13 @@
       return '<div class="photo-column" style="--photo-count:' + photos.length + '"><div class="photo-column-track ' + (column%2?'drift-down':'drift-up') + '">' + group + group + '</div></div>';
     }).join('');
   }
+  // Align both buttons after header reparenting; hovering never pauses their clocks.
+  if (typeof requestAnimationFrame === 'function') requestAnimationFrame(() => {
+    const start = document.timeline.currentTime;
+    document.querySelectorAll('.news-nav,.service-menu-toggle').forEach(element => {
+      element.getAnimations().filter(animation => animation.animationName === 'nav-green-cycle').forEach(animation => { animation.startTime = start; });
+    });
+  });
   const menu = document.querySelector('.service-menu');
   const button = menu?.querySelector('button');
   const panel = menu?.querySelector('.service-menu-panel');
