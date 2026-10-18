@@ -56,3 +56,7 @@
 - 2026-10-16（台灣時間）按鈕共用動畫起點且 hover 不暫停時鐘，確保移開後立即恢復同步色階。GitHub 9fcf2d1／Netlify 6ad2355aff3194817999d24d 已上線並驗證正式頁與公告 API。此次為使用者明確要求的一批部署；勿另推文件造成額外部署。
 
 - 2026-10-17 新增 GitHub Actions Website checks：main／PR／手動執行七組現有驗證，Node 22、contents:read，不使用正式密鑰。主分支推送仍自動觸發既有 Netlify 部署，不要再額外呼叫手動部署。
+
+- 2026-10-18 SEO／GEO 本機優化：使用者目標為 Cosplay／第一次體驗 Cosplay。新增中英文 cosplay-experience 指南，頁尾及 About／FAQ 連入；套餐及 OfferCatalog 共用 service-data.json，品牌 COZCOS／COzCos 別名、指南 Article、16頁網站地圖。package.ps1 已含新頁。build-seo.mjs 與 app.js 中英文頁尾同步維護。llms.txt 非 Google 排名機制，不保證收錄、排名或 AI 引用。此次未推送、未部署。
+
+- 2026-10-18 使用者明確授權本批 SEO／新手指南及品牌圖示上線。About 管理員入口改用 admin-signin-link，與後台 .admin-entry 卡片隔離；入口約30px高。搜尋圖示使用 assets/coz-green-icon.png（192px）及 favicon.ico（48/96/192px），官方綠色 Logo 不含小字，Organization.logo 同步。Google 搜尋圖示更新需等待重新抓取，勿聲稱立即更換或保證第一名。

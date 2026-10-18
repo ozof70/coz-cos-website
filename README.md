@@ -203,3 +203,9 @@ Netlify 的 Powered by Netlify badge 已於專案設定關閉。
 - .github/workflows/ci.yml 在 main 推送、PR 或手動執行時，以 Node.js 22 驗證公告後台、SEO、服務、場次、同意統計、角色同步及載入重試。CI 僅需讀取儲存庫，不使用管理密碼或 Netlify 金鑰。
 - GitHub main 的推送仍由既有 Netlify 整合自動部署；CI 本身不額外發起部署。
 
+
+## 2026-10-18 搜尋與品牌更新
+- 中英新手指南（cosplay-experience[-zh].html）、品牌別名、套餐 OfferCatalog 與16頁網站地圖；指南、價目表價格共用 service-data.json。
+- About 頁 admin-signin-link 為小型扁平入口，與後台公告卡片樣式分離。
+- 搜尋圖示使用綠色無小字192px PNG及多尺寸favicon.ico。Google重新抓取與呈現時間不由網站控制。詳見 SEO-NOTES.md。
+
