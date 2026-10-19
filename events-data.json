@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-19",
   "source": "https://www.doujin.com.tw/events/alist/all",
   "bookingPolicy": "Upcoming events are open to COz Cos booking inquiries; availability is confirmed on Instagram.",
   "events": [
@@ -21,6 +21,16 @@
       "startDate": "2026-10-24",
       "endDate": "2026-10-25",
       "source": "https://www.doujin.com.tw/events/info/2545",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2573",
+      "name": "聚首吧！LoveLiver！",
+      "region": "north",
+      "venue": "台北微風廣場藝文中心",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-25",
+      "source": "https://www.doujin.com.tw/events/info/2573",
       "booking": "open"
     },
     {
@@ -94,6 +104,16 @@
       "booking": "open"
     },
     {
+      "id": "doujin-2571",
+      "name": "布期而遇——布袋戲ONLY同人販售會",
+      "region": "north",
+      "venue": "龍山文創基地",
+      "startDate": "2026-11-22",
+      "endDate": "2026-11-22",
+      "source": "https://www.doujin.com.tw/events/info/2571",
+      "booking": "open"
+    },
+    {
       "id": "doujin-2468",
       "name": "SEGA GAME ONLY",
       "region": "north",
@@ -124,6 +144,16 @@
       "booking": "open"
     },
     {
+      "id": "doujin-2575",
+      "name": "BLUMP!!胖楽会 2nd",
+      "region": "north",
+      "venue": "理想間 Fancy space 1F & B1F",
+      "startDate": "2026-12-06",
+      "endDate": "2026-12-06",
+      "source": "https://www.doujin.com.tw/events/info/2575",
+      "booking": "open"
+    },
+    {
       "id": "doujin-2356",
       "name": "CWT-74《台北場》",
       "region": "north",
@@ -131,6 +161,26 @@
       "startDate": "2026-12-12",
       "endDate": "2026-12-13",
       "source": "https://www.doujin.com.tw/events/info/2356",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2570",
+      "name": "青山四月天・台中冬季篇-古風創作 × 二創 × Cosplay × 全古風向",
+      "region": "central",
+      "venue": "台中文化資產園區-B03藝文展覽館 B館",
+      "startDate": "2026-12-12",
+      "endDate": "2026-12-13",
+      "source": "https://www.doujin.com.tw/events/info/2570",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2572",
+      "name": "蓬山有約 雲海相逢-劍三場內ONLY",
+      "region": "central",
+      "venue": "台中文化資產園區-B03藝文展覽館 B館",
+      "startDate": "2026-12-12",
+      "endDate": "2026-12-13",
+      "source": "https://www.doujin.com.tw/events/info/2572",
       "booking": "open"
     },
     {
@@ -222,7 +272,16 @@
       "endDate": "2027-01-10",
       "source": "https://www.doujin.com.tw/events/info/2524",
       "booking": "open"
+    },
+    {
+      "id": "doujin-2437",
+      "name": "【CWT-75】(台北場)",
+      "region": "north",
+      "venue": "國立臺灣大學綜合體育館1F&3F&4F",
+      "startDate": "2027-02-13",
+      "endDate": "2027-02-14",
+      "source": "https://www.doujin.com.tw/events/info/2437",
+      "booking": "open"
     }
-  ],
-  "coverage": "Northern Taiwan and central Taiwan through Taichung; excludes eastern Taiwan and areas south of Taichung."
+  ]
 }

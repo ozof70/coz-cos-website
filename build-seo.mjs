@@ -6,6 +6,7 @@ import {buildEventPages} from './event-pages.mjs';
 import {buildBeginnerPages} from './beginner-pages.mjs';
 const serviceData=JSON.parse(await readFile('service-data.json','utf8'));
 const seoUpdated='2026-10-18';
+const eventUpdated=JSON.parse(await readFile('events-data.json','utf8')).updated;
 const sandbox={window:{}};
 vm.runInNewContext(await readFile('content.js','utf8'),sandbox);
 const content=sandbox.window.COZ_CONTENT;
@@ -115,7 +116,7 @@ await buildEventPages(head,footer);
 await buildCMSPages(head,footer);
 await buildBeginnerPages(head,footer,content.links);
 const urls=['/','/en.html','/about.html','/about-zh.html','/faq.html','/faq-zh.html','/pricing.html','/pricing-zh.html','/characters.html','/characters-zh.html','/events.html','/events-zh.html','/news.html','/news-zh.html','/cosplay-experience.html','/cosplay-experience-zh.html'];
-await writeFile('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(path=>`<url><loc>${origin+path}</loc><lastmod>${seoUpdated}</lastmod></url>`).join('')+'</urlset>\n');
+await writeFile('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(path=>`<url><loc>${origin+path}</loc><lastmod>${path.startsWith('/events')?eventUpdated:seoUpdated}</lastmod></url>`).join('')+'</urlset>\n');
 await writeFile('robots.txt',`User-agent: *\nAllow: /\nDisallow: /share-preview.html\nSitemap: ${origin}/sitemap.xml\n`);
 await writeFile('llms.txt',`# COz Cos\n\n> COz Cos is a cosplay service brand in Taiwan. Services include makeup, costumes and photography experiences, costume rentals and sales, in-person makeup lessons, makeup services in northern and central Taiwan, and Xianyu/Taobao purchasing assistance.\n\n## Official information\n- [第一次 Cosplay 體驗指南](${origin}/cosplay-experience-zh.html)\n- [First-time cosplay guide](${origin}/cosplay-experience.html)\n- [English homepage](${origin}/en.html)\n- [繁體中文首頁](${origin}/)\n- [About COz Cos](${origin}/about.html)\n- [關於我們](${origin}/about-zh.html)\n- [Frequently asked questions](${origin}/faq.html)\n- [常見問題](${origin}/faq-zh.html)\n- [服務價目表](${origin}/pricing-zh.html)\n- [Service prices](${origin}/pricing.html)\n- [圓夢角色列表](${origin}/characters-zh.html)\n- [Character list](${origin}/characters.html)\n- [場次資訊及預訂](${origin}/events-zh.html)\n- [Events and bookings](${origin}/events.html)\n\n## Locations\n新北・鶯歌車站附近 ／ 台中・南屯捷運附近。Near Yingge Train Station, New Taipei and Nantun MRT Station, Taichung. Exact locations, availability and pricing must be confirmed through official Instagram. Package and individual service prices are published on the price list; no full street address is published here.\n\n## Official platforms\n${Object.entries(content.links).map(([key,url])=>`- [${key}](${url})`).join('\n')}\n\nLast updated: ${seoUpdated}.\n`);
 // A code-native, dedicated share card; the raster export is generated in the browser.
