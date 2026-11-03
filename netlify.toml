@@ -32,33 +32,9 @@
   force = true
 
 [[redirects]]
-  from = "/about-zh.html"
-  to = "/about-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/about-zh/"
-  to = "/about-zh"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/about-zh"
   to = "/about-zh.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/about.html"
-  to = "/about"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/about/"
-  to = "/about"
-  status = 301
   force = true
 
 [[redirects]]
@@ -68,33 +44,9 @@
   force = true
 
 [[redirects]]
-  from = "/admin.html"
-  to = "/admin"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/admin/"
-  to = "/admin"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/admin"
   to = "/admin.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/characters-zh.html"
-  to = "/characters-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/characters-zh/"
-  to = "/characters-zh"
-  status = 301
   force = true
 
 [[redirects]]
@@ -104,33 +56,9 @@
   force = true
 
 [[redirects]]
-  from = "/characters.html"
-  to = "/characters"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/characters/"
-  to = "/characters"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/characters"
   to = "/characters.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/cosplay-experience-zh.html"
-  to = "/cosplay-experience-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/cosplay-experience-zh/"
-  to = "/cosplay-experience-zh"
-  status = 301
   force = true
 
 [[redirects]]
@@ -140,33 +68,9 @@
   force = true
 
 [[redirects]]
-  from = "/cosplay-experience.html"
-  to = "/cosplay-experience"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/cosplay-experience/"
-  to = "/cosplay-experience"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/cosplay-experience"
   to = "/cosplay-experience.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/cosplay-packing-zh.html"
-  to = "/cosplay-packing-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/cosplay-packing-zh/"
-  to = "/cosplay-packing-zh"
-  status = 301
   force = true
 
 [[redirects]]
@@ -176,33 +80,9 @@
   force = true
 
 [[redirects]]
-  from = "/cosplay-packing.html"
-  to = "/cosplay-packing"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/cosplay-packing/"
-  to = "/cosplay-packing"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/cosplay-packing"
   to = "/cosplay-packing.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/cosplay-wig-care-zh.html"
-  to = "/cosplay-wig-care-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/cosplay-wig-care-zh/"
-  to = "/cosplay-wig-care-zh"
-  status = 301
   force = true
 
 [[redirects]]
@@ -212,33 +92,9 @@
   force = true
 
 [[redirects]]
-  from = "/cosplay-wig-care.html"
-  to = "/cosplay-wig-care"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/cosplay-wig-care/"
-  to = "/cosplay-wig-care"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/cosplay-wig-care"
   to = "/cosplay-wig-care.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/en.html"
-  to = "/en"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/"
-  to = "/en"
-  status = 301
   force = true
 
 [[redirects]]
@@ -248,33 +104,9 @@
   force = true
 
 [[redirects]]
-  from = "/events-zh.html"
-  to = "/events-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/events-zh/"
-  to = "/events-zh"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/events-zh"
   to = "/events-zh.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/events.html"
-  to = "/events"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/events/"
-  to = "/events"
-  status = 301
   force = true
 
 [[redirects]]
@@ -284,33 +116,9 @@
   force = true
 
 [[redirects]]
-  from = "/faq-zh.html"
-  to = "/faq-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/faq-zh/"
-  to = "/faq-zh"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/faq-zh"
   to = "/faq-zh.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/faq.html"
-  to = "/faq"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/faq/"
-  to = "/faq"
-  status = 301
   force = true
 
 [[redirects]]
@@ -320,33 +128,9 @@
   force = true
 
 [[redirects]]
-  from = "/news-zh.html"
-  to = "/news-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/news-zh/"
-  to = "/news-zh"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/news-zh"
   to = "/news-zh.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/news.html"
-  to = "/news"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/news/"
-  to = "/news"
-  status = 301
   force = true
 
 [[redirects]]
@@ -356,33 +140,9 @@
   force = true
 
 [[redirects]]
-  from = "/pricing-zh.html"
-  to = "/pricing-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/pricing-zh/"
-  to = "/pricing-zh"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/pricing-zh"
   to = "/pricing-zh.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/pricing.html"
-  to = "/pricing"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/pricing/"
-  to = "/pricing"
-  status = 301
   force = true
 
 [[redirects]]
@@ -392,33 +152,9 @@
   force = true
 
 [[redirects]]
-  from = "/privacy.html"
-  to = "/privacy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/privacy/"
-  to = "/privacy"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/privacy"
   to = "/privacy.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/share-preview.html"
-  to = "/share-preview"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/share-preview/"
-  to = "/share-preview"
-  status = 301
   force = true
 
 [[redirects]]
@@ -428,33 +164,9 @@
   force = true
 
 [[redirects]]
-  from = "/yelan-cosplay-zh.html"
-  to = "/yelan-cosplay-zh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/yelan-cosplay-zh/"
-  to = "/yelan-cosplay-zh"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/yelan-cosplay-zh"
   to = "/yelan-cosplay-zh.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/yelan-cosplay.html"
-  to = "/yelan-cosplay"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/yelan-cosplay/"
-  to = "/yelan-cosplay"
-  status = 301
   force = true
 
 [[redirects]]

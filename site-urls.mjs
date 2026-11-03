@@ -29,9 +29,10 @@ export async function refreshSiteRoutes() {
   const rules=[];
   for(const file of files.filter(file=>!['index.html','zh.html'].includes(file))) {
     const page=cleanPagePath('/'+file);
-    rules.push(`[[redirects]]\n  from = "/${file}"\n  to = "${page}"\n  status = 301\n  force = true\n`,
-      `[[redirects]]\n  from = "${page}/"\n  to = "${page}"\n  status = 301\n  force = true\n`,
-      `[[redirects]]\n  from = "${page}"\n  to = "/${file}"\n  status = 200\n  force = true\n`);
+    // Netlify normalizes .html and trailing slashes before matching redirect rules.
+    // A 301 between these equivalent paths would redirect the clean URL to itself.
+    // Serve the clean URL, and retain legacy files with canonical metadata instead.
+    rules.push(`[[redirects]]\n  from = "${page}"\n  to = "/${file}"\n  status = 200\n  force = true\n`);
   }
   const begin='# BEGIN extensionless page routes';
   const end='# END extensionless page routes';
