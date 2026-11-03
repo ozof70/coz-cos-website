@@ -3,6 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {createCMS} from './server/cms.mjs';
 import {localStore} from './server/local-store.mjs';
+import {cleanPagePath} from './site-urls.mjs';
 const localSecrets=JSON.parse(await readFile('.local-admin.json','utf8'));
 const cms=createCMS(localStore,localSecrets);
 const root=resolve('.');
@@ -16,6 +17,9 @@ createServer(async(req,res)=>{try{
  }
  const name=decodeURIComponent(url.pathname);
  if(name.split('/').some(p=>p.startsWith('.'))||/^\/(server|netlify|photo-originals|node_modules)(\/|$)/.test(name)){res.writeHead(403).end();return;}
- const file=resolve(root,'.'+(name==='/'?'/index.html':name));if(!file.startsWith(root+sep)){res.writeHead(403).end();return;}const body=await readFile(file);res.writeHead(200,{'Content-Type':mime[extname(file)]||'application/octet-stream'}).end(body);
+ const clean=cleanPagePath(name);
+ if(clean!==name){res.writeHead(301,{Location:clean+url.search}).end();return;}
+ const page=name==='/'?'/index.html':!extname(name)?name+'.html':name;
+ const file=resolve(root,'.'+page);if(!file.startsWith(root+sep)){res.writeHead(403).end();return;}const body=await readFile(file);res.writeHead(200,{'Content-Type':mime[extname(file)]||'application/octet-stream'}).end(body);
  }catch{res.writeHead(404).end('Not found');}}).listen(4173,'127.0.0.1',()=>console.log('Local: http://localhost:4173'));
 

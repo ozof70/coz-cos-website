@@ -76,7 +76,7 @@
     const text = document.createElement('p');
     text.textContent = en ? 'May we use Google Analytics cookies to understand visits to COz Cos?' : '允許 COz Cos 使用 Google Analytics Cookie 統計網站瀏覽嗎？';
     const details = document.createElement('a');
-    details.href = '/privacy.html';
+    details.href = '/privacy';
     details.textContent = en ? 'Learn more' : '了解詳情';
     banner.append(text, details);
     for (const [value, label] of [['declined', en ? 'Decline' : '不允許'], ['accepted', en ? 'Allow' : '允許']]) {

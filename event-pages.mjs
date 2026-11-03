@@ -1,4 +1,5 @@
-import {readFile,writeFile} from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
+import {writePageFile as writeFile} from './site-urls.mjs';
 import {serviceMenu} from './service-pages.mjs';
 import {isSupportedEvent,withinEventWindow} from './update-events.mjs';
 const escape = text=>String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');

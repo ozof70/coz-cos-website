@@ -39,7 +39,7 @@
     const suffix = english ? '' : '-zh';
     const news = document.querySelector('.news-nav');
     news.textContent = english ? 'News' : '最新消息';
-    news.href = `/news${suffix}.html`;
+    news.href = `/news${suffix}`;
     const menu = document.querySelector('.service-menu');
     menu.setAttribute('aria-label', english ? 'Services' : '服務資訊');
     menu.querySelector('.service-menu-toggle').textContent = english ? 'Services' : '服務';
@@ -48,15 +48,15 @@
     const serviceNames = english ? ['Service prices', 'Character list', 'Events & bookings'] : ['服務價目表', '圓夢角色列表', '場次資訊及預訂'];
     menu.querySelectorAll('.service-menu-panel a').forEach((link, index) => {
       link.textContent = serviceNames[index];
-      link.href = `/${['pricing', 'characters', 'events'][index]}${suffix}.html`;
+      link.href = `/${['pricing', 'characters', 'events'][index]}${suffix}`;
     });
     const footer = document.querySelector('.footer-links');
     footer.setAttribute('aria-label', english ? 'Site information' : '網站資訊');
     footer.querySelectorAll('a').forEach((link, index) => {
       link.textContent = (english ? ['About Us', 'FAQ', 'Privacy & analytics', 'First-time cosplay'] : ['關於我們', '常見問題', '隱私與流量', '第一次 Cosplay'])[index];
-      link.href = index === 3 ? `/cosplay-experience${suffix}.html` : index === 2 ? '/privacy.html' : `/${['about', 'faq'][index]}${suffix}.html`;
+      link.href = index === 3 ? `/cosplay-experience${suffix}` : index === 2 ? '/privacy' : `/${['about', 'faq'][index]}${suffix}`;
     });
-    const canonical = `https://cozcos.com/${english ? 'en.html' : ''}`;
+    const canonical = `https://cozcos.com/${english ? 'en' : ''}`;
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
     document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonical);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', copy.title);
@@ -66,12 +66,12 @@
   }
   window.COZ_SWITCH_LANGUAGE = () => {
     language = language === 'en' ? 'zh' : 'en';
-    history.pushState(null, '', language === 'en' ? '/en.html' : '/');
+    history.pushState(null, '', language === 'en' ? '/en' : '/');
     renderLanguage();
   };
   toggle.addEventListener('click', () => window.COZ_SWITCH_LANGUAGE());
   window.addEventListener('popstate', () => {
-    language = location.pathname === '/en.html' ? 'en' : 'zh';
+    language = /^\/en(?:\.html)?\/?$/.test(location.pathname) ? 'en' : 'zh';
     renderLanguage();
   });
   renderLanguage();

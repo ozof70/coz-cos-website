@@ -209,3 +209,11 @@ Netlify 的 Powered by Netlify badge 已於專案設定關閉。
 - About 頁 admin-signin-link 為小型扁平入口，與後台公告卡片樣式分離。
 - 搜尋圖示使用綠色無小字192px PNG及多尺寸favicon.ico。Google重新抓取與呈現時間不由網站控制。詳見 SEO-NOTES.md。
 
+
+## 2026-10-23 本機內容SEO（尚未部署）
+
+- editorial-data.mjs 管理三篇雙語文章；editorial-pages.mjs 生成六頁，build-seo.mjs 同步22頁網站地圖及文章標記。
+- 四套餐增加說明；中英FAQ各14題。價格及地區安排不變。
+- 文章、FAQ與價格內容修改後執行 node build-seo.mjs 和現有驗證，再執行 package.ps1。
+- QA流程頁 qa/seo-content-review-2026-10-23.html，排版檢查 qa/verify-editorial.mjs，不納入發布。
+- 本批未推送；GitHub main 推送會自動部署 Netlify，不要額外手動部署一次。上文歷史記載以最新AGENTS.md設定為準。

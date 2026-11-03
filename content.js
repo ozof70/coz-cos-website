@@ -24,7 +24,7 @@ window.COZ_CONTENT = {
 window.COZ_CONTENT.languages = {
   en: {
     title: 'COz Cos | Cosplay Makeup, Costumes & Photography in Taiwan',
-    intro: 'We are COz Cos. From costumes and makeup to photography,<br>we help bring your favorite characters to life and tell your story.',
+    intro: 'We are COz Cos. Our all-in-one cosplay experiences combine<br>character makeup, wigs, costumes and photography to bring your story to life.',
     aboutTitle: 'Inspired by passion. <span class="serif">Made for your character.</span>',
     about: 'We offer complete cosplay experiences, costume rentals and sales, in-person makeup lessons,<br class="desktop-break">and makeup services across northern and central Taiwan. We also help with Xianyu and Taobao purchases,<br class="desktop-break">cosplay essentials, and a shared closet that gives costumes a new stage.',
     locations: 'Yingge, New Taipei · near the train station / Nantun, Taichung · near the MRT',
@@ -38,7 +38,7 @@ window.COZ_CONTENT.languages = {
   },
   zh: {
     title: 'COz Cos｜Cosplay 一條龍體驗・角色妝容・服裝租借與攝影',
-    intro: '我們是 COz Cos。想第一次體驗 Cosplay？<br>從服裝、角色妝容到攝影，陪你走進喜歡的角色。',
+    intro: '我們是 COz Cos，提供 Cosplay 一條龍體驗。<br>從角色妝容、假髮與服裝到攝影，陪你走進喜歡的角色。',
     aboutTitle: '從熱愛出發，<span class="serif">為你的角色準備。</span>',
     about: '我們提供 Cosplay 一條龍體驗、服裝租借與出售、Cos 妝實體教學與中北部代妝，<br class="desktop-break">也提供閒魚、淘寶代購與出角小物，並透過共享衣櫃，讓服裝裡的熱愛再次登場。',
     locations: '新北・鶯歌車站附近 ／ 台中・南屯捷運附近',

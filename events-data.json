@@ -1,38 +1,8 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-11-03",
   "source": "https://www.doujin.com.tw/events/alist/all",
   "bookingPolicy": "Upcoming events are open to COz Cos booking inquiries; availability is confirmed on Instagram.",
   "events": [
-    {
-      "id": "doujin-2502",
-      "name": "《迦勒底出動！異聞空間潛入調查 ～FGO only 2026～》",
-      "region": "north",
-      "venue": "三重綜合體育館",
-      "startDate": "2026-10-24",
-      "endDate": "2026-10-24",
-      "source": "https://www.doujin.com.tw/events/info/2502",
-      "booking": "open"
-    },
-    {
-      "id": "doujin-2545",
-      "name": "巴哈姆特30週年站聚「巴哈市集」",
-      "region": "north",
-      "venue": "花博公園 爭艷館",
-      "startDate": "2026-10-24",
-      "endDate": "2026-10-25",
-      "source": "https://www.doujin.com.tw/events/info/2545",
-      "booking": "open"
-    },
-    {
-      "id": "doujin-2573",
-      "name": "聚首吧！LoveLiver！",
-      "region": "north",
-      "venue": "台北微風廣場藝文中心",
-      "startDate": "2026-10-24",
-      "endDate": "2026-10-25",
-      "source": "https://www.doujin.com.tw/events/info/2573",
-      "booking": "open"
-    },
     {
       "id": "doujin-2445",
       "name": "Petit Fancy亞洲動漫創作展 PF45",
@@ -41,6 +11,16 @@
       "startDate": "2026-11-07",
       "endDate": "2026-11-08",
       "source": "https://www.doujin.com.tw/events/info/2445",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2584",
+      "name": "漫漫玩第十三回合",
+      "region": "north",
+      "venue": "台北地下街Y區1號廣場(Y27出口旁",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-08",
+      "source": "https://www.doujin.com.tw/events/info/2584",
       "booking": "open"
     },
     {
@@ -204,6 +184,16 @@
       "booking": "open"
     },
     {
+      "id": "doujin-2577",
+      "name": "CCF-09 動漫盛典",
+      "region": "central",
+      "venue": "台中逢甲大學育樂館",
+      "startDate": "2026-12-25",
+      "endDate": "2026-12-26",
+      "source": "https://www.doujin.com.tw/events/info/2577",
+      "booking": "open"
+    },
+    {
       "id": "doujin-2513",
       "name": "GJ36動漫創作展",
       "region": "central",
@@ -274,6 +264,16 @@
       "booking": "open"
     },
     {
+      "id": "doujin-2581",
+      "name": "もう一度、完全燃焼- 第二回 TAIWAN CUP 《賽馬娘 Pretty Derby》與競馬Only",
+      "region": "north",
+      "venue": "台北市客家文化中心",
+      "startDate": "2027-01-30",
+      "endDate": "2027-01-30",
+      "source": "https://www.doujin.com.tw/events/info/2581",
+      "booking": "open"
+    },
+    {
       "id": "doujin-2437",
       "name": "【CWT-75】(台北場)",
       "region": "north",
@@ -281,6 +281,16 @@
       "startDate": "2027-02-13",
       "endDate": "2027-02-14",
       "source": "https://www.doujin.com.tw/events/info/2437",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2501",
+      "name": "Fancy Frontier開拓動漫祭 FF48",
+      "region": "north",
+      "venue": "花博公園 爭艷館",
+      "startDate": "2027-02-19",
+      "endDate": "2027-02-21",
+      "source": "https://www.doujin.com.tw/events/info/2501",
       "booking": "open"
     }
   ]

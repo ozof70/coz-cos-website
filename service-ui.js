@@ -55,7 +55,7 @@
         switching = true;
         language.classList.toggle('is-english', !english);
         language.classList.add('is-switching');
-        const destination = language.getAttribute('href') || (english ? '/' : '/en.html');
+        const destination = language.getAttribute('href') || (english ? '/' : '/en');
         setTimeout(() => location.assign(destination), matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 260);
       }, { capture: true });
       controls.append(language);
