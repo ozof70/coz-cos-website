@@ -5,15 +5,16 @@ const data=JSON.parse(await readFile('service-data.json','utf8'));
 assert.equal(data.roles.length,53);
 assert.equal(data.roles.filter(role=>role.group==='main').length,53);
 assert.equal(data.roles.filter(role=>role.group==='partner').length,0);
-assert.deepEqual(data.packages.map(item=>item.price),[3499,4699,5699,3299]);
-assert.deepEqual(data.items.map(item=>item.price),[900,300,300,500,1200,950,1800,600,250]);
+assert.deepEqual(data.packages.map(item=>item.price),[4299,3999,5499,6699,7799]);
+assert.deepEqual(data.items.map(item=>item.price),[1200,900,1800,500,350,700,1400,1200,170,300,300,600,400,250]);
 assert.equal(data.items[0].unitZh,'／小時（2小時起約）');
-assert.equal(data.items[5].unitZh,'起');
+assert.equal(data.items.find(item=>item.zh==='漫展代妝').price,1200);
+assert.equal(data.items.find(item=>item.zh==='漫展代妝').unitZh,'');
 assert.equal(data.roles.find(role=>role.character==='大清初音').work,'初音');
 assert.equal(data.roles.find(role=>role.character==='阿蕾奇諾').size,'L & XL');
 for(const lang of ['zh','en']){
  const pricing=await readFile(lang==='zh'?'pricing-zh.html':'pricing.html','utf8');
- for(const amount of [3499,4699,5699,3299,900,300,500,1200,950,1800,600,250])assert.ok(pricing.includes('NT$'+amount.toLocaleString('en-US')));
+ for(const amount of [4299,3999,5499,6699,7799,1200,900,1800,500,350,700,1400,170,300,600,400,250])assert.ok(pricing.includes('NT$'+amount.toLocaleString('en-US')));
  const roles=await readFile(lang==='zh'?'characters-zh.html':'characters.html','utf8');
  assert.equal((roles.match(/<tr data-role /g)||[]).length,53);
  assert.ok(!/合作衣櫃|Partner closets|partner-closet/.test(roles));
@@ -42,7 +43,7 @@ search.value=' 八重神子 ';search.listeners.input();assert.equal(rows[0].hidd
 search.value='不存在的角色';search.listeners.input();assert.equal(empty.hidden,false);assert.equal(group.hidden,true);
 search.value='';search.listeners.input();assert.equal(status.textContent,'共 2 筆角色');assert.equal(group.hidden,false);
 button.listeners.click({detail:0});events.click({target:{}});assert.equal(panel.hidden,true);
-console.log('Services: 13 prices, 53 roles, public-only fields, search and menu keyboard behavior OK');
+console.log('Services: 5 packages and 14 item prices, 53 roles, public-only fields, search and menu keyboard behavior OK');
 
 // Role nodes arriving after the API response must join the same reveal observer.
 const revealCard=()=>{const names=new Set();return {classList:{add:name=>names.add(name),contains:name=>names.has(name)}}};

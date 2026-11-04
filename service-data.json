@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-11-04",
   "source": "https://docs.google.com/spreadsheets/d/1ycKZs6wRASBlGWAshPYGI2ewreH48BcvfN3_efyRokI/edit",
   "roles": [
     {
@@ -323,97 +323,177 @@
   ],
   "packages": [
     {
-      "zh": "基本套餐",
+      "zh": "基礎套餐",
       "en": "Basic",
+      "price": 4299,
       "detailsZh": "角色妝容、假髮與服裝＋素棚攝影30分鐘＋2張精修",
-      "detailsEn": "Character makeup, wig and costume + 30-minute plain studio photography + 2 retouched photos",
-      "price": 3499
-    },
-    {
-      "zh": "升級套餐",
-      "en": "Upgrade",
-      "detailsZh": "角色妝容、假髮與服裝＋棚景攝影1小時＋3張精修",
-      "detailsEn": "Character makeup, wig and costume + 1-hour themed studio photography + 3 retouched photos",
-      "price": 4699
-    },
-    {
-      "zh": "豪華套餐",
-      "en": "Deluxe",
-      "detailsZh": "角色妝容、假髮與服裝＋棚景攝影＋5張精修＋動圖＋全檔",
-      "detailsEn": "Character makeup, wig and costume + themed studio photography + 5 retouched photos + animated image + all files",
-      "price": 5699
+      "detailsEn": "Character makeup, wig and costume + 30-minute plain studio shoot + 2 retouched photos",
+      "guidanceZh": "以簡潔棚景體驗角色妝髮衣與拍攝，適合想從基本內容開始比較的你。30分鐘為攝影時間；妝髮、換裝與完整行程請先確認。",
+      "guidanceEn": "A character makeover with a simple studio setting and two retouched images. The 30 minutes refers to photography; confirm the full visit schedule separately."
     },
     {
       "zh": "學生套餐",
       "en": "Student",
+      "price": 3999,
       "detailsZh": "角色妝容、假髮與服裝＋素棚攝影30分鐘＋2張精修",
-      "detailsEn": "Character makeup, wig and costume + 30-minute plain studio photography + 2 retouched photos",
-      "price": 3299
+      "detailsEn": "Character makeup, wig and costume + 30-minute plain studio shoot + 2 retouched photos",
+      "guidanceZh": "提供學生方案的角色妝髮衣與素棚拍攝。學生適用資格與所需證明，請在預約前確認。",
+      "guidanceEn": "The plain studio experience at our student rate. Please confirm eligibility and any required proof before booking."
+    },
+    {
+      "zh": "升級套餐",
+      "en": "Studio Plus",
+      "price": 5499,
+      "detailsZh": "角色妝容、假髮與服裝＋棚景攝影1小時＋3張精修",
+      "detailsEn": "Character makeup, wig and costume + 1-hour themed studio shoot + 3 retouched photos",
+      "guidanceZh": "希望加入棚景氛圍，可以選擇升級方案。拍攝1小時、交付3張精修，場景與道具安排請先討論。",
+      "guidanceEn": "Choose a themed studio setting with an hour of photography and three retouched images. Discuss scenery and props with us before your visit."
+    },
+    {
+      "zh": "豪華套餐",
+      "en": "Deluxe",
+      "price": 6699,
+      "detailsZh": "角色妝容、假髮與服裝＋棚景攝影＋5張精修＋動圖＋全檔",
+      "detailsEn": "Character makeup, wig and costume + themed studio shoot + 5 retouched photos + animated image + all image files",
+      "guidanceZh": "想保留更多角色影像，可比較精修、動圖與全檔的完整組合。拍攝時長、全檔範圍及交付方式請先確認。",
+      "guidanceEn": "A fuller collection with five retouched photos, an animated image and all image files. Confirm shoot duration, file scope and delivery arrangements when booking."
+    },
+    {
+      "zh": "外拍套餐",
+      "en": "On-location",
+      "price": 7799,
+      "detailsZh": "角色妝容、假髮與服裝＋攝影1小時＋5張精修＋動圖＋全檔",
+      "detailsEn": "Character makeup, wig and costume + 1-hour on-location shoot + 5 retouched photos + animated image + all image files",
+      "guidanceZh": "把角色故事帶到工作室以外，包含1小時攝影及本方案列示交付項目。拍攝地點、交通與場地相關安排請先私訊確認。",
+      "guidanceEn": "Take your character beyond the studio with a one-hour shoot, five retouched photos, an animated image and all image files. Discuss location, travel and venue arrangements with us first."
     }
   ],
   "items": [
     {
       "zh": "Cos妝一對一實體教學",
-      "en": "One-to-one cosplay makeup lesson",
-      "price": 900,
+      "en": "Private in-person cosplay makeup lesson",
+      "price": 1200,
+      "group": "lessons",
       "unitZh": "／小時（2小時起約）",
-      "unitEn": " / hour (2-hour minimum booking)"
+      "unitEn": " / hour (2-hour minimum)"
     },
     {
-      "zh": "Live 2D動圖",
-      "en": "Live 2D animated image",
-      "price": 300,
+      "zh": "Cos妝一對一線上教學",
+      "en": "Private online cosplay makeup lesson",
+      "price": 900,
+      "group": "lessons",
+      "unitZh": "／小時（2小時起約）",
+      "unitEn": " / hour (2-hour minimum)"
+    },
+    {
+      "zh": "素棚＋攝影1小時",
+      "en": "Plain studio + 1-hour photography",
+      "price": 1800,
+      "group": "studio",
       "unitZh": "",
       "unitEn": ""
     },
     {
-      "zh": "卸妝",
-      "en": "Makeup removal",
-      "price": 300,
-      "unitZh": "",
-      "unitEn": ""
+      "zh": "棚景自拍",
+      "en": "Self-shoot in a themed studio",
+      "price": 500,
+      "group": "studio",
+      "unitZh": "／30分鐘",
+      "unitEn": " / 30 minutes"
+    },
+    {
+      "zh": "素棚自拍",
+      "en": "Self-shoot in a plain studio",
+      "price": 350,
+      "group": "studio",
+      "unitZh": "／30分鐘",
+      "unitEn": " / 30 minutes"
     },
     {
       "zh": "精修2張",
       "en": "2 retouched photos",
-      "price": 500,
+      "price": 700,
+      "group": "extras",
       "unitZh": "",
       "unitEn": ""
     },
     {
       "zh": "一般代妝",
-      "en": "Standard makeup service",
-      "price": 1200,
+      "en": "Standard cosplay makeup",
+      "price": 1400,
+      "group": "makeup",
       "unitZh": "",
       "unitEn": ""
     },
     {
       "zh": "漫展代妝",
       "en": "Convention makeup",
-      "price": 950,
-      "unitZh": "起",
-      "unitEn": " and up"
+      "price": 1200,
+      "group": "makeup",
+      "unitZh": "",
+      "unitEn": ""
     },
     {
-      "zh": "素棚＋攝影1小時",
-      "en": "Plain studio + 1-hour photography",
-      "price": 1800,
+      "zh": "拍立得",
+      "en": "Instant photo",
+      "price": 170,
+      "group": "extras",
+      "unitZh": "／張",
+      "unitEn": " / print"
+    },
+    {
+      "zh": "拍立得（兩張）",
+      "en": "2 instant photos",
+      "price": 300,
+      "group": "extras",
+      "unitZh": "／2張",
+      "unitEn": " / 2 prints"
+    },
+    {
+      "zh": "卸妝",
+      "en": "Makeup removal",
+      "price": 300,
+      "group": "extras",
       "unitZh": "",
       "unitEn": ""
     },
     {
       "zh": "全檔",
-      "en": "All files",
+      "en": "All image files",
       "price": 600,
+      "group": "extras",
+      "unitZh": "",
+      "unitEn": ""
+    },
+    {
+      "zh": "Live 2D動圖",
+      "en": "Live 2D animated image",
+      "price": 400,
+      "group": "extras",
       "unitZh": "",
       "unitEn": ""
     },
     {
       "zh": "隱形眼鏡／美瞳",
-      "en": "Contact / colored lenses",
+      "en": "Contact / coloured lenses",
       "price": 250,
+      "group": "extras",
       "unitZh": "",
       "unitEn": ""
     }
+  ],
+  "pricingNotesZh": [
+    "一般代妝約2小時，漫展代妝約1.5小時；以上為參考時長，請於預約時確認。",
+    "妝容教學採客製化安排，可事先選定想學習的妝容類型。實體及線上教學均為2小時起約。",
+    "拍立得照片可於現場領取。",
+    "自拍方案為棚景或素棚自行拍攝，與含攝影服務的方案分開列示。",
+    "所有金額以新台幣計價。角色、學生資格、場地、檔期、額外需求及最終安排請先透過 IG 確認。"
+  ],
+  "pricingNotesEn": [
+    "Allow approximately 2 hours for standard makeup or 1.5 hours for convention makeup. Confirm the schedule when booking.",
+    "Makeup lessons are tailored to your goals. Choose the style you want to learn in advance; both formats require a minimum two-hour booking.",
+    "Instant photo prints can be collected on site.",
+    "Self-shoot options are listed separately from sessions that include a photographer.",
+    "All prices are in New Taiwan Dollars. Confirm character availability, student eligibility, venues, dates, extra requests and final arrangements through Instagram."
   ]
 }

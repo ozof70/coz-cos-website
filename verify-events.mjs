@@ -14,7 +14,8 @@ for(const event of data.events){assert.ok(event.name&&event.venue);assert.ok(isS
 for(const file of ['events-zh.html','events.html']){
  const html=await readFile(file,'utf8');
  assert.equal((html.match(/data-event-id=/g)||[]).length,data.events.length);
- assert.ok(html.includes('950'));
+ assert.ok(html.includes('NT$1,200'));
+ assert.ok(!html.includes('NT$950'));
  assert.ok(html.includes('https://www.instagram.com/cozcos_cosplay/'));
  assert.ok(html.includes('--reveal-x:-24px')&&html.includes('--reveal-x:24px'));
  assert.ok(html.includes('id="north"')&&html.includes('id="central"'));

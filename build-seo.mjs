@@ -8,7 +8,7 @@ import {buildBeginnerPages} from './beginner-pages.mjs';
 import {buildEditorialPages} from './editorial-pages.mjs';
 import {articles,editorialDate,articleLinks} from './editorial-data.mjs';
 const serviceData=JSON.parse(await readFile('service-data.json','utf8'));
-const seoUpdated='2026-10-23';
+const seoUpdated='2026-11-04';
 const guidePublished='2026-10-18';
 const eventUpdated=JSON.parse(await readFile('events-data.json','utf8')).updated;
 const sandbox={window:{}};
@@ -25,7 +25,7 @@ const org={
  sameAs:[content.links.instagram,content.links.facebook,content.links.threads,content.links.wig],
  contactPoint:{'@type':'ContactPoint',contactType:'customer service',url:content.links.instagram,availableLanguage:['zh-Hant','en']},
  areaServed:[{'@type':'City',name:'New Taipei City / 新北市'},{'@type':'City',name:'Taichung / 台中市'}],
- hasOfferCatalog:{'@type':'OfferCatalog',name:'COz Cos services',itemListElement:['Cosplay 妝容、服裝與攝影體驗','服裝租借與出售','Cos 妝實體教學','中北部代妝','閒魚／淘寶代購'].map(name=>({'@type':'Offer',itemOffered:{'@type':'Service',name,provider:{'@id':origin+'/#organization'}}}))}
+ hasOfferCatalog:{'@type':'OfferCatalog',name:'COz Cos services',itemListElement:['Cosplay 妝容、服裝與攝影體驗','服裝租借與出售','Cos 妝實體與線上教學','自拍棚租與外拍體驗','中北部代妝','閒魚／淘寶代購'].map(name=>({'@type':'Offer',itemOffered:{'@type':'Service',name,provider:{'@id':origin+'/#organization'}}}))}
 };
 const faq={
  zh:[
@@ -56,14 +56,14 @@ const faq={
  ]
 };
 faq.zh.push(
- ['Cos 妝實體教學適合新手嗎？要帶自己的化妝品嗎？','想學習自己的角色妝容，可以先告訴我們目前的化妝經驗、角色參考圖與希望練習的部分。官網列示一對一實體教學為 NT$900／小時，2小時起約；教學內容、地區、可安排時段與需自備的工具材料，請先在 IG 確認，不預設所有材料都包含。'],
+ ['Cos 妝實體教學適合新手嗎？要帶自己的化妝品嗎？','想學習自己的角色妝容，可以先告訴我們目前的化妝經驗、角色參考圖與希望練習的部分。官網列示一對一實體教學為 NT$1,200／小時，2小時起約；另提供線上一對一教學 NT$900／小時，同樣2小時起約；教學內容、地區、可安排時段與需自備的工具材料，請先在 IG 確認，不預設所有材料都包含。'],
  ['想在鶯歌租借 Cosplay 服裝，該先提供什麼？','先提供作品、角色、服裝版本、希望租用日期與尺寸；已有想搭配的鞋或假髮也可附圖。共享衣櫃提供租借與分享資訊，官網角色列表提供角色與尺碼參考，兩者都不是檔期保證。取還方式、租期、費用與服裝狀況需依平台及衣主確認，不代表一定能在鶯歌現場取件。'],
  ['套餐的攝影時間就是整個體驗時間嗎？','不是。基本與學生套餐列示素棚攝影30分鐘，升級套餐列示棚景攝影1小時；這些是攝影時間。妝髮、換裝與收拾所需時間會依角色與安排不同，請確認完整行程後再安排交通；豪華套餐的拍攝時長也請另行確認。']
 );
 faq.en.push(
- ['Can beginners ask about makeup lessons, and what should they bring?','Share your makeup experience, character references and the techniques you want to practise. Published one-to-one lessons cost NT$900 per hour with a two-hour minimum. Confirm lesson content, region, dates and required tools and materials through Instagram; do not assume all supplies are included.'],
+ ['Can beginners ask about makeup lessons, and what should they bring?','Share your makeup experience, character references and the techniques you want to practise. Private in-person lessons cost NT$1,200 per hour; online lessons cost NT$900 per hour. Both have a two-hour minimum. Confirm lesson content, region, dates and required tools and materials through Instagram; do not assume all supplies are included.'],
  ['What should I prepare when asking about costume rental in Yingge?','Provide the series, character, costume version, rental dates and measurements. Include photos of shoes or a wig you plan to use. The Shared Closet and character catalogue are references, not date guarantees. Confirm collection, returns, rental period, fees and condition with the platform and costume owner; local pickup in Yingge is not automatically available.'],
- ['Is the listed photography time the full visit duration?','No. Basic and Student list 30 minutes of plain studio photography; Upgrade lists one hour of themed studio photography. Makeup, changing and packing require separate arrangements. Confirm the full schedule before planning transport, and ask separately about the Deluxe shoot duration.']
+ ['Is the listed photography time the full visit duration?','No. Basic and Student list 30 minutes of plain studio photography; Studio Plus lists one hour of themed studio photography. Makeup, changing and packing require separate arrangements. Confirm the full schedule before planning transport, and ask separately about the Deluxe shoot duration.']
 );
 function head(lang,path,title,description,extraType='WebPage',questions=null){
  const counterpart=path==='/'?'/en.html':path==='/en.html'?'/':lang==='en'?path.replace('.html','-zh.html'):path.replace('-zh.html','.html');
@@ -124,7 +124,7 @@ for(const lang of ['en','zh']){
   ];
   const inner=kind==='about'?aboutSections.map(([h,p])=>`<section class="info-section"><h2>${h}</h2><p>${p}</p></section>`).join(''):faq[lang].map(([q,a])=>`<section class="faq-item"><h2>${q}</h2><p>${a}</p></section>`).join('');
   const alternate='/'+kind+(zh?'':'-zh')+'.html';
-  const html=`<!doctype html><html lang="${zh?'zh-Hant':'en'}">${head(lang,pagePath,title,desc,kind==='faq'?'FAQPage':'AboutPage',kind==='faq'?faq[lang]:null)}<body class="info-page"><header class="header info-header"><a class="info-home" href="${zh?'/':'/en.html'}"><img src="/assets/coz-logo.svg" alt=""><span>COz Cos</span></a><a class="language-toggle" href="${alternate}" aria-label="${copy.toggleLabel}">${copy.toggle}</a></header><main class="info-content">${kind==='about'?'<a class="admin-signin-link" href="/admin.html">'+(zh?'管理員登入':'Admin sign in')+'</a>':''}<h1>${kind==='about'?(zh?'關於我們':'About Us'):(zh?'常見問題':'Frequently Asked Questions')}</h1><p class="info-lead">${kind==='about'?(zh?'從角色的想像，到屬於你的故事。':'From imagining a character to telling your story.'):(zh?'服務、預約與平台資訊，一次了解。':'Your guide to our services, bookings and official channels.')}</p>${inner}${articleLinks(lang)}<p class="service-note"><a href="/cosplay-experience${zh?'-zh':''}.html">${zh?'第一次體驗 Cosplay？查看準備、套餐與預約指南':'Trying cosplay for the first time? Read our preparation, packages and booking guide'}</a></p><p class="content-date">${zh?'資訊更新：2026 年 10 月 23 日':'Updated: October 23, 2026'}</p></main>${footer(lang)}</body></html>`;
+  const html=`<!doctype html><html lang="${zh?'zh-Hant':'en'}">${head(lang,pagePath,title,desc,kind==='faq'?'FAQPage':'AboutPage',kind==='faq'?faq[lang]:null)}<body class="info-page"><header class="header info-header"><a class="info-home" href="${zh?'/':'/en.html'}"><img src="/assets/coz-logo.svg" alt=""><span>COz Cos</span></a><a class="language-toggle" href="${alternate}" aria-label="${copy.toggleLabel}">${copy.toggle}</a></header><main class="info-content">${kind==='about'?'<a class="admin-signin-link" href="/admin.html">'+(zh?'管理員登入':'Admin sign in')+'</a>':''}<h1>${kind==='about'?(zh?'關於我們':'About Us'):(zh?'常見問題':'Frequently Asked Questions')}</h1><p class="info-lead">${kind==='about'?(zh?'從角色的想像，到屬於你的故事。':'From imagining a character to telling your story.'):(zh?'服務、預約與平台資訊，一次了解。':'Your guide to our services, bookings and official channels.')}</p>${inner}${articleLinks(lang)}<p class="service-note"><a href="/cosplay-experience${zh?'-zh':''}.html">${zh?'第一次體驗 Cosplay？查看準備、套餐與預約指南':'Trying cosplay for the first time? Read our preparation, packages and booking guide'}</a></p><p class="content-date">${zh?'資訊更新：2026 年 11 月 4 日':'Updated: November 4, 2026'}</p></main>${footer(lang)}</body></html>`;
   await writeFile(file,html);
  }
 }
