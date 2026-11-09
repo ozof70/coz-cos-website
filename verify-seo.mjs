@@ -50,7 +50,7 @@ for(const file of ['cosplay-experience.html','cosplay-experience-zh.html']){
   if(offer.price!==prices[i].price||offer.priceCurrency!=='TWD'||!html.includes(offer.description))throw Error('Service data must match visible package contents and prices');
   if('availability' in offer)throw Error('Do not invent date or stock availability');
  }
- if(article.datePublished!=='2026-10-18'||article.dateModified!=='2026-11-04')throw Error('Preserve publication date and record the actual revision date');
+ if(article.datePublished!=='2026-10-18'||article.dateModified!=='2026-11-09')throw Error('Preserve publication date and record the actual revision date');
  if(article.about?.['@id']!==service['@id'])throw Error('Guide and service must be linked');
  if(file.endsWith('-zh.html')&&!/<h1>[^<]*Cosplay 一條龍體驗/.test(html))throw Error('Visible heading must describe the target service');
 }

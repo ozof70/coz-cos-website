@@ -12,6 +12,14 @@
 - 價目表的 OfferCatalog 與指南的 Article 資料須與可見內容一致。這些不是保證排名或 AI 引用的特殊標記。
 - llms.txt 僅作補充資料索引；Google 明確指出不使用它提高搜尋或 AI 搜尋排名。
 
+## 2026-11-09 目標查詢：Cosplay 一條龍
+
+- 落地頁固定為 cosplay-experience-zh，不另建同義詞頁。開頭先回答「什麼是一條龍、多少錢、在哪裡」，其後是流程、套餐與比較。使用者指定落地頁不放客人作品照（2026-11-09）。
+- 價格、套餐數與角色數由 service-data.json 帶入，不要手寫。
+- 導向落地頁的頁尾、首頁、About／FAQ 與價目表連結都使用含「Cosplay 一條龍」的文字。build-seo.mjs 與 app.js 的頁尾要同步。
+- 未加入虛構評價、第一名宣稱或完整地址。LocalBusiness 需要實際地址，取得可公開地址後再改。
+- 站外工作：Google 商家檔案、真實評論、IG／FB／Threads 連到落地頁、活動與社群的自然連結。
+
 ## 下次獲准部署後
 
 1. 驗證兩份指南、canonical、互相對應的 hreflang、sitemap.xml 及服務頁可正常載入。

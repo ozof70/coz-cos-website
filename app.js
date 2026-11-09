@@ -53,7 +53,7 @@
     const footer = document.querySelector('.footer-links');
     footer.setAttribute('aria-label', english ? 'Site information' : '網站資訊');
     footer.querySelectorAll('a').forEach((link, index) => {
-      link.textContent = (english ? ['About Us', 'FAQ', 'Privacy & analytics', 'First-time cosplay'] : ['關於我們', '常見問題', '隱私與流量', '第一次 Cosplay'])[index];
+      link.textContent = (english ? ['About Us', 'FAQ', 'Privacy & analytics', 'All-in-one cosplay'] : ['關於我們', '常見問題', '隱私與流量', 'Cosplay 一條龍體驗'])[index];
       link.href = index === 3 ? `/cosplay-experience${suffix}` : index === 2 ? '/privacy' : `/${['about', 'faq'][index]}${suffix}`;
     });
     const canonical = `https://cozcos.com/${english ? 'en' : ''}`;
