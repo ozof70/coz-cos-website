@@ -1,28 +1,8 @@
 {
-  "updated": "2026-11-03",
+  "updated": "2026-11-09",
   "source": "https://www.doujin.com.tw/events/alist/all",
   "bookingPolicy": "Upcoming events are open to COz Cos booking inquiries; availability is confirmed on Instagram.",
   "events": [
-    {
-      "id": "doujin-2445",
-      "name": "Petit Fancy亞洲動漫創作展 PF45",
-      "region": "north",
-      "venue": "花博公園 爭艷館",
-      "startDate": "2026-11-07",
-      "endDate": "2026-11-08",
-      "source": "https://www.doujin.com.tw/events/info/2445",
-      "booking": "open"
-    },
-    {
-      "id": "doujin-2584",
-      "name": "漫漫玩第十三回合",
-      "region": "north",
-      "venue": "台北地下街Y區1號廣場(Y27出口旁",
-      "startDate": "2026-11-07",
-      "endDate": "2026-11-08",
-      "source": "https://www.doujin.com.tw/events/info/2584",
-      "booking": "open"
-    },
     {
       "id": "doujin-2477",
       "name": "Bring It On！歐美主題ONLY場 BIO14",
@@ -291,6 +271,16 @@
       "startDate": "2027-02-19",
       "endDate": "2027-02-21",
       "source": "https://www.doujin.com.tw/events/info/2501",
+      "booking": "open"
+    },
+    {
+      "id": "doujin-2497",
+      "name": "忍者旅行100%",
+      "region": "north",
+      "venue": "台北市客家文化中心",
+      "startDate": "2027-03-06",
+      "endDate": "2027-03-06",
+      "source": "https://www.doujin.com.tw/events/info/2497",
       "booking": "open"
     }
   ]
