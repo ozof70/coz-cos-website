@@ -45,6 +45,12 @@
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
     document.head.append(script);
   }
+  // Counts an action for GA and the admin dashboard, only while analytics is allowed.
+  window.COZ_TRACK = name => {
+    if (readChoice() !== 'accepted') return;
+    window.gtag?.('event', name);
+    fetch('/api/cms?action=event', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,name}),keepalive:true}).catch(()=>{});
+  };
   function choose(value) {
     saveChoice(value);
     banner?.remove();

@@ -11,6 +11,27 @@
   socialLinks.innerHTML = entries.map((item,index) => '<a class="icon-link icon-' + item.key + ' icon-enter" href="' + content.links[item.key] + '" target="_blank" rel="noopener noreferrer" style="--delay:' + index*150 + 'ms;--label-direction:' + (index%2?24:-24) + 'px;--label-delay:' + index*90 + 'ms"><span class="icon-visual"><img src="assets/' + item.file + '" alt="" class="brand-icon"></span><span class="icon-label" aria-hidden="true"></span></a>').join('');
   let language = document.documentElement.lang === 'zh-Hant' ? 'zh' : 'en';
   const toggle = document.querySelector('#language-toggle');
+  const heroCta = document.querySelector('.hero-cta');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  heroCta.addEventListener('pointerdown', event => {
+    if (reducedMotion.matches) return;
+    const box = heroCta.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'hero-cta-ripple';
+    ripple.setAttribute('aria-hidden', 'true');
+    ripple.style.left = event.clientX - box.left + 'px';
+    ripple.style.top = event.clientY - box.top + 'px';
+    heroCta.append(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+  heroCta.addEventListener('click', event => {
+    window.COZ_TRACK?.('home_cta_click');
+    // A short pause lets the press effect play. New-tab clicks and reduced motion go straight through.
+    if (reducedMotion.matches || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    heroCta.classList.add('is-pressed');
+    setTimeout(() => { location.href = heroCta.href; }, 220);
+  });
   function updateLabels() {
     const copy = content.languages[language];
     socialLinks.querySelectorAll('a').forEach((anchor,index) => {
@@ -25,6 +46,8 @@
     document.documentElement.lang = language === 'en' ? 'en' : 'zh-Hant';
     document.title = copy.title;
     document.querySelector('.intro').innerHTML = copy.intro;
+    heroCta.textContent = copy.cta;
+    heroCta.href = copy.ctaHref;
     document.querySelector('#about-title').innerHTML = copy.aboutTitle;
     document.querySelector('.about > p:not(.locations)').innerHTML = copy.about;
     document.querySelector('.locations').textContent = copy.locations;

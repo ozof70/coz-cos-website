@@ -20,6 +20,12 @@
 - 未加入虛構評價、第一名宣稱或完整地址。LocalBusiness 需要實際地址，取得可公開地址後再改。
 - 站外工作：Google 商家檔案、真實評論、IG／FB／Threads 連到落地頁、活動與社群的自然連結。
 
+## 2026-11-09 轉換與索引
+
+- 首頁第一屏按鈕前往服務價目表，避免讓人以為只有一條龍；一條龍落地頁由首頁第一段的文字連結進入。文案與連結在 content.js，build-seo.mjs 與 app.js 同步。
+- 落地頁的 inquiry.js 只在瀏覽器整理詢問內容，不送出也不儲存。GA 事件 home_cta_click、inquiry_copy、inquiry_open_instagram 不含欄位內容，且須訪客同意統計。
+- 最新消息內容由 CMS 於執行時載入、目前僅 3 則，故 news 頁設 noindex 並移出 sitemap。公告累積後再評估伺服器輸出。
+
 ## 下次獲准部署後
 
 1. 驗證兩份指南、canonical、互相對應的 hreflang、sitemap.xml 及服務頁可正常載入。

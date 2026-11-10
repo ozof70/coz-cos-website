@@ -115,7 +115,7 @@
   }));
  };
  const refresh=async()=>{
-  const data=await api('dashboard');csrf=data.csrf;login.hidden=true;dashboard.hidden=false;document.querySelector('h1').textContent='COz Cos 管理後台';document.querySelector('#traffic-today').textContent=data.today;document.querySelector('#traffic-month').textContent=data.month;
+  const data=await api('dashboard');csrf=data.csrf;login.hidden=true;dashboard.hidden=false;document.querySelector('h1').textContent='COz Cos 管理後台';document.querySelector('#traffic-today').textContent=data.today;document.querySelector('#traffic-month').textContent=data.month;document.querySelector('#performance-rows').replaceChildren(...[['home_cta_click','首頁按鈕點擊'],['inquiry_copy','複製詢問內容'],['inquiry_open_instagram','前往 IG 私訊']].map(([key,label])=>{const row=node('tr'),heading=node('th',label);heading.scope='row';row.append(heading,node('td',String(data.performance?.[key]?.today??0)),node('td',String(data.performance?.[key]?.month??0)));return row}));
   works=[...new Set([...(data.works||[]),...data.roles.map(role=>role.work)])].sort((a,b)=>a.localeCompare(b,'zh-Hant'));
   workPicker(document.querySelector('#admin-role [name="work"]'));
   renderList(document.querySelector('#admin-news-list'),data.news,'news');renderRoleGroups(data.roles);

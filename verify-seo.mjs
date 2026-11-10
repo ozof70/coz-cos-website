@@ -25,7 +25,12 @@ for(const file of files){
  console.log(`${file}: canonical, languages, schema and local links OK`);
 }
 const sitemap=await readFile('sitemap.xml','utf8');
-if((sitemap.match(/<loc>/g)||[]).length!==22)throw Error('Sitemap must contain twenty-two public pages');
+if((sitemap.match(/<loc>/g)||[]).length!==20)throw Error('Sitemap must contain twenty public pages');
+// Announcements load from the CMS at runtime, so their pages stay out of the index for now.
+for(const file of ['news.html','news-zh.html']){if(!(await readFile(file,'utf8')).includes('name="robots" content="noindex,follow"'))throw Error(file+': must be noindex');}
+if(/\/news(-zh)?</.test(sitemap))throw Error('News pages must not be in the sitemap');
+for(const file of ['index.html','en.html','zh.html']){const html=await readFile(file,'utf8');if(!/<a class="hero-cta" href="\/pricing(-zh)?">/.test(html))throw Error(file+': hero call to action must lead to all services');if(!/<p class="intro">[^]*?<a href="\/cosplay-experience(-zh)?">/.test(html))throw Error(file+': intro must keep the all-in-one guide link');}
+for(const file of ['cosplay-experience.html','cosplay-experience-zh.html']){const html=await readFile(file,'utf8');if(!html.includes('id="inquiry-builder"')||!html.includes('src="/inquiry.js"')||!html.includes('class="inquiry-list"'))throw Error(file+': inquiry helper or plain checklist missing');}
 await access('assets/social-card-v2.jpg');
 console.log('Sitemap and share image OK');
 

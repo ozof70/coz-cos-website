@@ -38,7 +38,13 @@ assert.equal((await cms(request('roles',{operation:'delete',id:content.roles.fin
 assert.equal((await cms(request('roles',{operation:'update',id:base.id,work:'',character:'X',size:'M'},headers))).status,400);
 assert.equal((await cms(request('visit',{consent:false,path:'/'}))).status,400);
 await cms(request('visit',{consent:true,path:'/'}));await cms(request('visit',{consent:true,path:'/'}));
+assert.equal((await cms(request('event',{consent:false,name:'inquiry_copy'}))).status,400);
+assert.equal((await cms(request('event',{consent:true,name:'made_up_event'}))).status,400);
+assert.equal((await cms(request('event',{consent:true,name:'inquiry_copy'},{origin:'https://other.example'}))).status,403);
+await cms(request('event',{consent:true,name:'inquiry_copy'}));await cms(request('event',{consent:true,name:'inquiry_copy'}));
+await cms(request('event',{consent:true,name:'home_cta_click'}));
 const dashboard=await (await cms(request('dashboard',null,{cookie}))).json();assert.equal(dashboard.today,1);assert.equal(dashboard.month,1);
+assert.deepEqual(dashboard.performance,{home_cta_click:{today:1,month:1},inquiry_copy:{today:1,month:1},inquiry_open_instagram:{today:0,month:0}},'Performance counters count distinct actions and ignore rapid repeats');
 for(const role of content.roles)assert.ok(dashboard.works.includes(role.work),'All original and added works remain available in the work picker');
 assert.ok(dashboard.works.includes(base.work),'Deleting a character must not remove its work from management');
 assert.equal(new Set(dashboard.works).size,dashboard.works.length);

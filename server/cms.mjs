@@ -9,7 +9,9 @@ const effectiveRoles=stored=>{
 const json=(body,status=200,headers={})=>Response.json(body,{status,headers:{'Cache-Control':'no-store',...headers}});
 const equal=(a,b)=>{const x=Buffer.from(a),y=Buffer.from(b);return x.length===y.length&&timingSafeEqual(x,y)};
 const dateKeys=()=>{const day=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei'}).format(new Date());return {day,month:day.slice(0,7)}};
+const PERFORMANCE_EVENTS=['home_cta_click','inquiry_copy','inquiry_open_instagram'];
 export function createCMS(store,secrets){
+ const visitorKey=(req,day)=>createHmac('sha256',secrets.sessionKey||'local').update(day+'|'+(req.headers.get('x-nf-client-connection-ip')||'local')+'|'+(req.headers.get('user-agent')||'')).digest('hex');
  async function change(key,update){for(let i=0;i<8;i++){const current=await store.getWithMetadata(key,{type:'json'});const next=update(current?.data);const result=await store.setJSON(key,next,current?.etag?{onlyIfMatch:current.etag}:{onlyIfNew:true});if(result.modified)return next}throw Error('Busy, please retry')}
  const sign=data=>createHmac('sha256',secrets.sessionKey).update(data).digest('base64url');
  const session=req=>{if(!secrets.sessionKey)return null;try{const cookie=req.headers.get('cookie')?.match(/(?:^|;\s*)coz_admin=([^;]+)/)?.[1];const [body,signature]=cookie.split('.');if(!equal(sign(body),signature))return null;const data=JSON.parse(Buffer.from(body,'base64url'));return data.exp>Date.now()?data:null}catch{return null}};
@@ -28,9 +30,14 @@ export function createCMS(store,secrets){
    if(req.method==='POST'&&req.headers.get('origin')!==url.origin)return json({error:'來源驗證失敗'},403);
    if(req.method==='POST'&&action==='visit'){
     const data=await req.json();if(data.consent!==true||!/^\/[\w/.-]*$/.test(data.path||'')||!/^\/[\w/.-]*$/.test(data.path)||/admin/.test(data.path))return json({error:'Invalid visit'},400);
-    const keys=dateKeys();const fingerprint=createHmac('sha256',secrets.sessionKey||'local').update(keys.day+'|'+(req.headers.get('x-nf-client-connection-ip')||'local')+'|'+(req.headers.get('user-agent')||'')).digest('hex');
+    const keys=dateKeys();const fingerprint=visitorKey(req,keys.day);
     const slot=Math.floor(Date.now()/5000);const dedupe=await store.setJSON('dedupe/'+keys.day+'/'+fingerprint+'/'+slot,true,{onlyIfNew:true});
     if(dedupe.modified)await change('visits/'+keys.day,value=>({views:(value?.views||0)+1}));return json({ok:true});
+   }
+   if(req.method==='POST'&&action==='event'){
+    const data=await req.json();if(data.consent!==true||!PERFORMANCE_EVENTS.includes(data.name))return json({error:'Invalid event'},400);
+    const keys=dateKeys();const dedupe=await store.setJSON('dedupe/'+keys.day+'/'+visitorKey(req,keys.day)+'/'+data.name+'/'+Math.floor(Date.now()/5000),true,{onlyIfNew:true});
+    if(dedupe.modified)await change('events/'+keys.day,value=>({...value,[data.name]:(value?.[data.name]||0)+1}));return json({ok:true});
    }
    if(action==='login'&&req.method==='POST'){
     if(!secrets.passwordHash||!secrets.salt||!secrets.sessionKey)return json({error:'管理員登入尚未完成伺服器設定'},503);
@@ -54,10 +61,12 @@ export function createCMS(store,secrets){
    }
    if(action==='dashboard'&&req.method==='GET'){
     const {day,month}=dateKeys();
-    const [visits,news,roles]=await Promise.all([Promise.all(Array.from({length:Number(day.slice(-2))},(_,index)=>store.get('visits/'+month+'-'+String(index+1).padStart(2,'0'),{type:'json'}))),store.get('news',{type:'json'}),store.get('roles',{type:'json'})]);
+    const days=Array.from({length:Number(day.slice(-2))},(_,index)=>month+'-'+String(index+1).padStart(2,'0'));
+    const [visits,events,news,roles]=await Promise.all([Promise.all(days.map(key=>store.get('visits/'+key,{type:'json'}))),Promise.all(days.map(key=>store.get('events/'+key,{type:'json'}))),store.get('news',{type:'json'}),store.get('roles',{type:'json'})]);
+    const performance=Object.fromEntries(PERFORMANCE_EVENTS.map(name=>[name,{today:events.at(-1)?.[name]||0,month:events.reduce((sum,item)=>sum+(item?.[name]||0),0)}]));
     const managedRoles=effectiveRoles(roles);
     const works=[...new Set([...catalog,...managedRoles].map(role=>role.work))].sort((a,b)=>a.localeCompare(b,'zh-Hant'));
-    return json({csrf:auth.csrf,today:visits.at(-1)?.views||0,month:visits.reduce((sum,item)=>sum+(item?.views||0),0),day,news:news||[],roles:managedRoles,works,rolesVersion:2});
+    return json({csrf:auth.csrf,today:visits.at(-1)?.views||0,month:visits.reduce((sum,item)=>sum+(item?.views||0),0),performance,day,news:news||[],roles:managedRoles,works,rolesVersion:2});
    }
    if(action==='logout'&&req.method==='POST')return json({ok:true},200,{'Set-Cookie':'coz_admin=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'+(url.protocol==='https:'?'; Secure':'')});
    if(req.method==='POST'&&['news','roles'].includes(action)){

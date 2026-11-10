@@ -19,13 +19,14 @@ function run({ hostname = 'cozcos.com', protocol = 'https:', enabled = true, mea
   }
   const values = new Map(choice ? [['coz-analytics-choice', choice]] : []);
   const window = { COZ_ANALYTICS: { enabled, measurementId } };
-  const sandbox = { fetch:async()=>({ok:true}),window, URL, Date, location: { protocol, hostname, href: `${protocol}//${hostname}/?email=private@example.com#contact` },
+  const requests = [];
+  const sandbox = { fetch:async(url,options)=>{requests.push({url,options});return {ok:true}},window, URL, Date, location: { protocol, hostname, href: `${protocol}//${hostname}/?email=private@example.com#contact` },
     localStorage: { getItem: key => values.get(key) ?? null, setItem: (key, value) => values.set(key, value) },
     document: { documentElement: { lang: 'zh-Hant' }, referrer: 'https://example.com/?secret=123', cookie: '',
       head: { append: node => scripts.push(node) }, body: { append: node => nodes.push(node) },
       createElement: element, querySelectorAll: () => settings, getElementById: () => null } };
   vm.runInNewContext(source, sandbox);
-  return { window, nodes, scripts, settings, values };
+  return { window, nodes, scripts, settings, values, requests };
 }
 for (const options of [{ enabled: false }, { measurementId: '' }, { hostname: 'localhost', protocol: 'http:' }, { hostname: 'stellar-pothos-be4f0b.netlify.app' }]) {
   const result = run({ ...options, choice: 'accepted' });
@@ -58,4 +59,16 @@ for (const page of ['index.html','en.html','zh.html','about.html','about-zh.html
   assert.ok(html.includes('src="/analytics.js" defer'));
   assert.ok(html.indexOf('src="/analytics-config.js"') < html.indexOf('src="/analytics.js"'));
 }
+const eventRequests = result => result.requests.filter(request => request.url === '/api/cms?action=event');
+const allowed = run({ choice: 'accepted' });
+allowed.window.COZ_TRACK('inquiry_copy');
+assert.equal(eventRequests(allowed).length, 1);
+assert.equal(eventRequests(allowed)[0].options.body, JSON.stringify({ consent: true, name: 'inquiry_copy' }));
+assert.equal(allowed.window.dataLayer.filter(args => args[0] === 'event' && args[1] === 'inquiry_copy').length, 1);
+const refused = run({ choice: 'declined' });
+refused.window.COZ_TRACK('inquiry_copy');
+assert.equal(eventRequests(refused).length, 0, 'No action is counted after analytics is declined');
+const undecided = run();
+undecided.window.COZ_TRACK('inquiry_copy');
+assert.equal(eventRequests(undecided).length, 0, 'No action is counted before a choice is made');
 console.log('Analytics: production guard, opt-in, opt-out, sanitized URLs and single initialization OK');
